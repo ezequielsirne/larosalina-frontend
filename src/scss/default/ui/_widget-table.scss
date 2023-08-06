@@ -1,0 +1,49 @@
+.widget-table {
+	&.table {
+		background: $white;
+		
+		&.table-bordered {
+			& > tbody {
+				& > tr {
+					&:last-child {
+						border-bottom: none;
+					}
+					& td {
+						&:first-child {
+							border-left: none;
+						}
+						&:last-child {
+							border-right: none;
+						}
+					}
+				}
+			}
+			& > thead {
+				& > tr {
+					&:first-child {
+						border-top: none;
+					}
+					& th {
+						&:first-child {
+							border-left: none;
+						}
+						&:last-child {
+							border-right: none;
+						}
+					}
+				}
+			}
+		}
+		&.inverse-mode {
+			background: $gray-800;
+			color: $gray-300;
+			
+			& thead,
+			& tbody,
+			& tr,
+			& th {
+				border-color: $gray-700;
+			}
+		}
+	}
+}

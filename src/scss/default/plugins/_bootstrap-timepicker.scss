@@ -1,0 +1,96 @@
+.bootstrap-timepicker {
+	& .input-group-addon {
+		& i	{
+			body & {
+				width: auto;
+				height: auto;
+				display: inline;
+			}
+		}
+	}
+}
+
+.bootstrap-timepicker-widget {
+	& table {
+		& tbody {
+			& tr {
+				& td {
+					& .bootstrap-timepicker-hour,
+					& .bootstrap-timepicker-minute,
+					& .bootstrap-timepicker-meridian {
+						width: rem(40px);
+						height: $input-height;
+						border: 1px solid $border-color;
+						padding: rem(6px);
+						background: $white;
+						color: $input-color;
+						font-weight: $input-font-weight;
+						
+						@include box-shadow(none);
+						@include transition(all .2s linear);
+						@include border-radius($input-border-radius);
+						
+						&:focus {
+							border-color: $input-focus-border-color;
+							outline: none;
+							
+							@include box-shadow($input-focus-box-shadow);
+						}
+					}
+					& .glyphicon {
+						@include fontawesome();
+						
+						&.glyphicon-chevron-up {
+							&:before {
+								content: '\f077';
+							}
+						}
+						&.glyphicon-chevron-down {
+							&:before {
+								content: '\f078';
+							}
+						}
+					}
+					& a {
+						border: none;
+						color: $gray-500;
+						padding: $spacer / 2;
+						text-decoration: none;
+						
+						@include border-radius($border-radius !important);
+						
+						&:hover,
+						&:focus {
+							background: $gray-300;
+							color: $gray-700;
+						}
+					}
+					
+					&.separator {
+						padding: 0 $spacer / 2;
+					}
+				}
+			}
+		}
+	}
+	&:before {
+		display: none !important;
+	}
+	&:after {
+		left: $spacer !important;
+		top: -$spacer / 2 !important;
+		border-width: $spacer / 2 !important;
+	}
+	&.dropdown-menu {
+		padding: $spacer / 2 !important;
+		
+		@include border-radius($border-radius-lg !important);
+		@include box-shadow($box-shadow);
+	}
+	&.timepicker-orient-bottom {
+		&:after {
+			top: auto !important;
+			bottom: -$spacer / 2;
+		}
+	}
+}

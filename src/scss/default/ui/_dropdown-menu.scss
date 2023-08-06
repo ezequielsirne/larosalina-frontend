@@ -1,0 +1,101 @@
+.dropdown-menu {
+	font-size: $font-size-base;
+	
+	@include box-shadow($dropdown-box-shadow);
+	@if $enable-rtl {
+		text-align: right;
+	}
+	& .dropdown-item {
+		padding: $spacer / 3 $spacer;
+		font-weight: $font-weight-bold;
+		text-decoration: none;
+	}
+	
+	&.media-list {
+		max-width: rem(360px);
+		padding: 0;
+		
+		& .media {
+			border-top: 1px solid $gray-300;
+			border-bottom: 1px solid $gray-300;
+			margin-top: 0;
+			margin-bottom: -1px;
+			
+			@include display-flex();
+			
+			& .media-object {
+				height: rem(48px);
+				width: rem(48px);
+				line-height: rem(48px);
+				font-size: rem(18px);
+				color: $white;
+				text-align: center;
+				
+				@include border-radius($border-radius-lg);
+			}
+			& .media-object-icon {
+				position: absolute;
+				border: rem(3px) solid $white;
+				background: $white;
+				margin-top: rem(-11px);
+				display: block;
+				width: rem(21px);
+				height: rem(21px);
+				text-align: center;
+				font-size: rem(16px);
+				line-height: rem(16px);
+				text-align: center;
+				
+				@include border-radius($border-radius * 10);
+				@if $enable-rtl {
+					margin-right: rem(30px);
+				} @else {
+					margin-left: rem(30px);
+				}
+			}
+			& .media-left {
+				@if $enable-rtl {
+					padding-left: rem(12px);
+				} @else {
+					padding-right: rem(12px);
+				}
+			}
+			& .media-right {
+				@if $enable-rtl {
+					padding-left: 0;
+					padding-right: rem(12px);
+				} @else {
+					padding-left: rem(12px);
+				}
+			}
+			& .media-heading {
+				color: $gray-800;
+				margin-bottom: 0;
+				font-size: rem(12.5px);
+				line-height: rem(18px);
+			}
+			& p {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				margin-bottom: rem(5px);
+				line-height: rem(14px);
+				max-width: rem(270px);
+				color: $gray-600;
+				font-size: rem(11px);
+			}
+		}
+		& .dropdown-header {
+			font-weight: $font-weight-bolder;
+			color: $gray-800;
+			font-size: rem(10px);
+			background: tint-color($gray-500, 80%);
+			padding: $spacer * 0.66 $spacer;
+		}
+		& .dropdown-item {
+			padding: $spacer * 0.66 $spacer;
+		}
+		& .dropdown-footer { 
+			padding: $spacer * 0.66 $spacer;
+		}
+	}
+}

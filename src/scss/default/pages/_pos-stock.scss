@@ -1,0 +1,204 @@
+.pos-stock {
+	padding-top: $pos-stock-header-height;
+	
+	@include media-breakpoint-up(lg) {
+		height: 100%;
+	
+		@include display-flex();
+		@include flex-direction-column();
+	}
+	
+	& .pos-stock-header {
+		background: $white;
+		padding: $spacer * 0.66 $spacer * 1.75;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: $app-header-zindex;
+		height: $pos-stock-header-height;
+		
+		@include display-flex();
+		@include flex-align(center);
+		
+		& .logo,
+		& .time,
+		& .nav {
+			width: 33.33%;
+			
+			@include media-breakpoint-down(md) {
+				width: 50%;
+			}
+		}
+		& .logo {
+			@include display-flex();
+			
+			& > div,
+			& > a {
+				text-align: center;
+				color: $black;
+				text-decoration: none;
+				
+				@include display-flex();
+				@include flex-align(center);
+				
+				& .logo-img {
+					& img {
+						height: rem(32px);
+					}
+				}
+				& .logo-text {
+					font-weight: 500;
+					font-size: rem(16px);
+					letter-spacing: rem(1px);
+					
+					@if $enable-rtl {
+						margin-right: rem(15px);
+					} @else {
+						margin-left: rem(15px);
+					}
+				}
+			}
+		}
+		& .time {
+			font-weight: $font-weight-bold;
+			font-size: rem(20px);
+			
+			@include display-flex();
+			@include flex-align(center);
+			@include flex-justify-content(center);
+			@include media-breakpoint-down(md) {
+				display: none;
+			}
+		}
+		& .nav {
+			@include flex-align(center);
+			@include flex-justify-content(flex-end);
+			
+			& .nav-item {
+				& .nav-link {
+					padding: $spacer / 3 $spacer;
+					
+					@include media-breakpoint-down(md) {
+						padding: $spacer / 3 $spacer * 0.66;
+					}
+					& .nav-icon {
+						height: rem(20px);
+						color: $gray-900;
+					}
+				}
+			}
+		}
+	}
+	& .pos-stock-body {
+		height: calc(100% - 52px);
+		
+		@include flex(1);
+		@include display-flex();
+		
+		& .pos-stock-content {
+			@include flex(1);
+			
+			& .pos-stock-content-container {
+				padding: $spacer / 2;
+				height: 100%;
+				
+				& .pos-stock-product {
+					height: 100%;
+					padding: $spacer / 2;
+					
+					& .pos-stock-product-container {
+						background: $white;
+						height: 100%;
+						overflow: hidden;
+						
+						@include box-shadow($box-shadow);
+						@include border-radius($border-radius-lg);
+						
+						& .product {
+							height: 100%;
+							
+							@include display-flex();
+							@include flex-direction-column();
+							
+							& .product-img {
+								& .img {
+									padding-top: 75%;
+									background-size: cover;
+									background-position: center;
+									background-repeat: no-repeat;
+									
+									@include media-breakpoint-down(md) {
+										padding-top: 56.25%;
+									}
+								}
+							}
+							& .product-info {
+								padding: $spacer $spacer * 1.25;
+								
+								@include flex(1);
+								
+								& .title {
+									font-size: $font-size-lg;
+									font-weight: $font-weight-bold;
+								}
+								& .desc {
+									color: $gray-700;
+									margin-bottom: $spacer;
+								}
+							}
+							& .product-option {
+								margin: 0 0 $spacer / 3;
+								
+								& .option {
+									padding: rem(0);
+									@include flex(1);
+									@include display-flex();
+									@include flex-align(center);
+									
+									& .option-label {
+										font-weight: $font-weight-bold;
+										width: rem(90px);
+										
+										@if $enable-rtl {
+											padding-left: $spacer * 0.66;
+										} @else {
+											padding-right: $spacer * 0.66;
+										}
+									}
+									& .option-input {
+										@include flex(1);
+										
+										& .form-control {
+											padding: $spacer * 0.25 $spacer * 0.66;
+										}
+										& .form-switch {
+											& .form-check-input {
+												&:checked {
+													background-color: $teal;
+													border-color: $teal;
+												}
+											}
+										}
+									}
+									& + .option {
+										padding-top: $spacer;
+									}
+								}
+							}
+							& .product-action {
+								@include display-flex();
+								
+								& .btn {
+									padding: $spacer * 0.75 0;
+									@include flex(1);
+									@include border-radius(0);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

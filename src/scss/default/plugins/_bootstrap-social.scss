@@ -1,0 +1,19 @@
+.btn.btn-social,
+.btn.btn-social-icon {
+	& > :first-child {
+		@include display-flex();
+		@include flex-align(center);
+		@include flex-justify-content(center);
+	}
+	&.btn-lg {
+		& > :first-child {
+			line-height: initial;
+		}
+	}
+}
+.btn.btn-social-icon {
+	&.btn-lg {
+		width: rem(39px);
+		height: rem(39px);
+	}
+}

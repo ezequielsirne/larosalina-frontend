@@ -1,0 +1,11 @@
+.badge {
+	font-size: 75%;
+	font-weight: $font-weight-bold;
+	display: inline;
+	min-width: rem(10px);
+	padding: $badge-padding-y $badge-padding-x;
+	color: $white;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+}

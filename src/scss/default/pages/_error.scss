@@ -1,0 +1,51 @@
+.error {
+	margin: 0 auto;
+	text-align: center;
+	height: 100vh;
+	
+	@include display-flex();
+	@include flex-direction-column();
+	@include flex-justify-content(center);
+	
+	& .error-code,
+	& .error-content {
+		@include flex(1);
+		@include transform(translateZ(0));
+	}
+	& .error-code {
+		color: $gray-800;
+		font-size: rem(200px);
+		line-height: 1;
+		text-shadow: 10px 10px 0px rgba($gray-800, .2);
+		padding: $spacer * 2;
+		height: 50vh;
+		
+		@include display-flex();
+		@include flex-justify-content(center);
+		@include flex-align(flex-end);
+		@include media-breakpoint-down(md) {
+			font-size: rem(160px);
+		}
+		@include media-breakpoint-down(sm) {
+			font-size: rem(120px);
+		}
+	}
+	& .error-content {
+		bottom: 0;
+		padding: $spacer * 2;
+		background: $gray-800;
+		background-image: $app-error-page-bg-cover;
+	}
+	& .error-message {
+		color: $white;
+		font-size: $h2-font-size;
+		line-height: $headings-line-height;
+		letter-spacing: 0.5px;
+		margin-bottom: $spacer /  2;
+	}
+	& .error-desc {
+		font-size: $font-size-base;
+		color: rgba($white, .5);
+		letter-spacing: 0.5px;
+	}
+}

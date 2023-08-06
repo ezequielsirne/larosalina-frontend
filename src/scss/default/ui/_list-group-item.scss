@@ -1,0 +1,20 @@
+.list-group-item {
+	&.list-group-item-inverse {
+		background: $gray-800;
+		border-color: $gray-900;
+		color: $white;
+		
+		& .label-inverse,
+		& .badge-inverse {
+			background: rgba($black, .4);
+		}
+		&.list-group-item-action {
+			&:hover, 
+			&:focus {
+				color: $white;
+				background: $gray-700;
+				text-decoration: none;
+			}
+		}
+	}
+}

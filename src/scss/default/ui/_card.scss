@@ -1,0 +1,10 @@
+.card {
+	& .card-header {
+		& .nav-tabs {
+			& .nav-link.active {
+				border-color: $border-color;
+				border-bottom-color: $white;
+			}
+		}
+	}
+}

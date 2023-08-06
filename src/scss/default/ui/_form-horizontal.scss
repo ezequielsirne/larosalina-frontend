@@ -1,0 +1,41 @@
+.form-horizontal {
+	&.form-bordered {
+		& .form-group {
+			border-bottom: 1px solid tint-color($border-color, 50%);
+			margin: 0;
+			
+			& .col-form-label {
+				padding: $spacer;
+				
+				@include display-flex();
+				@include flex-align(center);
+				@include media-breakpoint-down(md) {
+					padding-bottom: $spacer / 2;
+				}
+				
+				& + div {
+					@if $enable-rtl {
+						border-right: 1px solid tint-color($border-color, 50%);
+					} @else {
+						border-left: 1px solid tint-color($border-color, 50%);
+					}
+					@include media-breakpoint-down(md) {
+						padding-top: 0;
+						
+						@if $enable-rtl {
+							border-right: none;
+						} @else {
+							border-left: none;
+						}
+					}
+				}
+			}
+			& > div {
+				padding: $spacer;
+			}
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+}

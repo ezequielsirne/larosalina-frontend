@@ -1,0 +1,112 @@
+.swal-overlay {
+	& .swal-modal {
+		padding: $spacer * 4 $spacer;
+		@include border-radius($border-radius-lg);
+		@include box-shadow($box-shadow-lg);
+		
+		& .swal-icon {
+			margin-top: 0;
+			margin-bottom: $spacer * 1.5;
+		}
+		& .swal-title {
+			padding: 0 $spacer 0;
+			margin: 0;
+			color: $gray-900;
+			font-size: $h1-font-size;
+			font-weight: $headings-font-weight;
+			line-height: $headings-line-height;
+		}
+		& .swal-text {
+			color: $gray-600;
+			font-size: $font-size-lg;
+			display: block;
+			max-width: 100%;
+			text-align: center;
+			padding: 0 0 $spacer;
+			font-weight: $font-weight-bold;
+		}
+		& .swal-icon--success,
+		& .swal-icon--success__ring {
+			border-color: rgba($teal, .2);
+		}
+		& .swal-icon--success__line--long,
+		& .swal-icon--success__line--tip {
+			background-color: $teal;
+		}
+		& .swal-icon--info {
+			border-color: $info;
+		
+			&:before,
+			&:after {
+				background-color: $info;
+			}
+		}
+		& .swal-icon--warning {
+			border-color: $warning;
+			
+			& .swal-icon--warning__body,
+			& .swal-icon--warning__dot {
+				background-color: $warning;
+			}
+		}
+		& .swal-icon--error {
+			border-color: $danger;
+			
+			& .swal-icon--error__line {
+				background-color: $danger;
+			}
+		}
+		& .swal-footer {
+			padding: 0 $spacer;
+			
+			@include display-flex();
+			@include flex-justify-content(center);
+			
+			& .swal-button-container {
+				margin: 0 $spacer / 4;
+			}
+		}
+	}
+	& .btn {
+		min-width: rem(100px);
+		padding: $btn-padding-y-lg $btn-padding-x-lg;
+		font-size: $btn-font-size-lg;
+	}
+	& .btn-primary {
+		@include button-variant($blue, $blue, shade-color($blue, 15%), shade-color($blue, 15%), shade-color($blue, 15%), shade-color($blue, 15%));
+	}
+	& .btn-success {
+		@include button-variant($teal, $teal, shade-color($teal, 15%), shade-color($teal, 15%), shade-color($teal, 15%), shade-color($teal, 15%));
+	}
+	& .btn-info {
+		@include button-variant($cyan, $cyan, shade-color($cyan, 15%), shade-color($cyan, 15%), shade-color($cyan, 15%), shade-color($cyan, 15%));
+	}
+	& .btn-warning {
+		@include button-variant($orange, $orange, shade-color($orange, 15%), shade-color($orange, 15%), shade-color($orange, 15%), shade-color($orange, 15%));
+	}
+	& .btn-danger {
+		@include button-variant($red, $red, shade-color($red, 15%), shade-color($red, 15%), shade-color($red, 15%), shade-color($red, 15%));
+	}
+	& .btn-default {
+		@include button-variant($gray-200, $gray-200, shade-color($gray-200, 10%), shade-color($gray-200, 10%), shade-color($gray-200, 10%), shade-color($gray-200, 10%));
+		
+		color: $gray-900;
+		
+		&:hover,
+		&:focus {
+			color: $gray-900;
+		}
+	}
+	& .btn-success,
+	& .btn-primary,
+	& .btn-info,
+	& .btn-warning,
+	& .btn-danger {
+		color: $white;
+		
+		&:hover,
+		&:focus {
+			color: $white;
+		}
+	}
+}

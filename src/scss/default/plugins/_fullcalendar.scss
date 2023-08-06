@@ -1,0 +1,131 @@
+.fc {
+	@if $enable-rtl {
+		direction: rtl;
+	}
+	
+	& .fc-view {
+		background: $white;
+		
+		& table {
+			& > :not(caption) > * {
+				border-width: 1px 0;
+				border-color: $table-border-color;
+			
+				& > * {
+					border-width: 0 1px;
+					border-color: $table-border-color;
+					
+					&.fc-timegrid-divider {
+						background: $table-border-color;
+					}
+				}
+			}
+		}
+		& .fc-event {
+			&:not(.fc-h-event) {
+				&:hover {
+					background-color: $gray-200;
+					border-color: $gray-200;
+				}
+			}
+			&.fc-h-event {
+				background: $blue;
+				border-color: $blue;
+			}
+		}
+		& a {
+				text-decoration: none;
+		}
+	}
+	& .fc-event-dragging {
+		background-color: $gray-500 !important;
+		border-color: $gray-500 !important;
+	}
+	& .fc-timeGridDay-view,
+	& .fc-timeGridWeek-view {
+		position: relative !important;
+		
+		& .fc-scroller-liquid-absolute {
+			position: relative !important;
+		}
+	}
+}
+.fc-event-list .fc-event {
+	background: none;
+	border: none;
+	color: $dark;
+	font-size: $font-size-base;
+	line-height: $line-height-sm;
+	font-weight: $font-weight-bold;
+	position: relative;
+	background: $white;
+	margin-bottom: $spacer / 2;
+	
+	@include border-radius($border-radius);
+	@include display-flex();
+	@if $enable-rtl {
+		padding: $spacer / 2 $spacer * 2.5 $spacer / 2 $spacer;
+	} @else {
+		padding: $spacer / 2 $spacer $spacer / 2 $spacer * 2.5;
+	}
+	
+	& + .fc-event {
+		margin-top: 0;
+	}
+	& .fc-event-text {
+		@include flex(1);
+	}
+	& .fc-event-icon {
+		@include display-flex();
+		@include flex-align(center);
+	}
+	&.ui-draggable-dragging {
+		border: 1px solid $border-color;
+	}
+	&:before {
+		content: '\f0b2';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: $spacer * 2;
+		text-align: center;
+		font-size: $font-size-lg;
+		background: tint-color($gray-200, 20%);
+		color: $gray-500;
+		
+		@include fontawesome();
+		@include display-flex();
+		@include flex-align(center);
+		@include flex-justify-content(center);
+		@if $enable-rtl {
+			right: 0;
+			@include border-radius(0 $border-radius $border-radius 0);
+		} @else {
+			left: 0;
+			@include border-radius($border-radius 0 0 $border-radius);
+		}
+	}
+	&:hover,
+	&:focus {
+		cursor: pointer;
+		background: $white;
+		
+		&:before {
+			color: $gray-800;
+		}
+	}
+}
+.fc-event.fc-event-dragging {
+	background: $white;
+	position: relative;
+	padding: $spacer / 2 $spacer;
+	
+	@include box-shadow($box-shadow-lg);
+	@include display-flex();
+	@include flex-align(center);
+	@include border-radius($border-radius);
+	
+	& .fc-event-text {
+		@include flex(1);
+	}
+}

@@ -1,0 +1,137 @@
+.result-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	
+	& .result-item {
+		background: $white;
+		overflow: hidden;
+		position: relative;
+		
+		@include display-flex();
+		@include flex-wrap(wrap);
+		@include border-radius($border-radius-lg);
+		@include clearfix();
+		@include media-breakpoint-down(xl) {
+			padding-top: rem(160px);
+		}
+		@include media-breakpoint-down(md) {
+			display: block;
+		}
+		
+		& + .result-item {
+			margin-top: $spacer / 2;
+		}
+		& .result-image {
+			width: rem(240px);
+			padding: 0;
+			overflow: hidden;
+			background: $dark;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			
+			@include media-breakpoint-down(xl) {
+				width: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: rem(160px);
+			}
+			
+			& a {
+				display: block;
+			}
+			&:hover,
+			&:focus {
+				opacity: 0.8;
+			}
+		}
+		& .result-info {
+			padding: $spacer * 1.25;
+			position: relative;
+			
+			@include flex(1);
+			
+			& .title {
+				margin: 0 0 $spacer / 4;
+				font-size: $h4-font-size;
+				line-height: $headings-line-height;
+			
+				& a {
+					color: $gray-800;
+					text-decoration: none;
+				}
+			}
+			& .location {
+				color: $gray-600;
+				margin-bottom: $spacer / 2;
+			}
+			& .desc {
+				margin-bottom: $spacer * 2;
+			}
+			& .btn-row {
+				@include display-flex();
+				@include flex-wrap(wrap);
+			
+				& a {
+					color: $gray-800;
+					background: $gray-200;
+					font-size: $font-size-lg;
+					padding: $spacer / 3 $spacer / 2;
+				
+					@include border-radius($border-radius);
+				
+					& + a {
+						@if $enable-rtl {
+							margin-right: $spacer / 3;
+						} @else {
+							margin-left: $spacer / 3;
+						}
+					}
+					&:hover,
+					&:focus {
+						background: $gray-300;
+					}
+				}
+			}
+		}
+		& .result-price {
+			width: rem(240px);
+			font-size: rem(28px);
+			text-align: center;
+			background: $gray-100;
+			color: $gray-800;
+			padding: $spacer * 1.25;
+			position: relative;
+			
+			@include display-flex();
+			@include flex-direction-column();
+			@include flex-justify-content(center);
+			@include flex-align(center);
+			@include media-breakpoint-down(lg) {
+				width: rem(180px);
+			}
+			@include media-breakpoint-down(md) {
+				width: auto;
+				padding: $spacer;
+			}
+			
+			& small {
+				display: block;
+				font-size: $font-size-sm;
+				font-weight: $font-weight-bold;
+				color: $gray-600;
+			}
+			& .btn {
+				margin-top: $spacer * 2;
+				
+				@include media-breakpoint-down(xl) {
+					margin-top: $spacer;
+				}
+			}
+		}
+	}
+}

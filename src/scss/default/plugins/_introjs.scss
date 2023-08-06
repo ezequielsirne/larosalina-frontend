@@ -1,0 +1,150 @@
+body {
+	& .introjs-overlay {
+		background: $gray-900;
+	}
+	& .introjs-tooltipReferenceLayer {
+		font-family: inherit;
+		
+		& * {
+			font-family: inherit;
+		}
+		& .introjs-tooltip {
+			@include border-radius($border-radius);
+			@include box-shadow($box-shadow);
+			
+			& .introjs-tooltip-header {
+				padding: $spacer / 1.25 $spacer;
+		
+				@include display-flex();
+				@include flex-align(center);
+				
+				& .introjs-tooltip-title {
+					float: none;
+					line-height: $headings-line-height;
+					
+					@include flex(1);
+				}
+				& .introjs-skipbutton {
+					text-decoration: none;
+					padding: 0;
+					float: none;
+				}
+			}
+			& .introjs-tooltiptext {
+				padding: $spacer / 1.25 $spacer;
+			}
+			& .introjs-bullets {
+				padding: $spacer / 1.25 $spacer;
+				
+				& ul {
+					& li {
+						& a {
+							background: $gray-200;
+					
+							&:hover {
+								background: $gray-300;
+							}
+							&.active {
+								background: $gray-500;
+							}
+						}
+					}
+				}
+			}
+			& .introjs-progress {
+				margin: $spacer / 1.25 $spacer;
+				background: $gray-200;
+				
+				& .introjs-progressbar {
+					background: $blue;
+				}
+			}
+			& .introjs-tooltipbuttons {
+				padding: $spacer / 1.25 $spacer;
+				
+				@include display-flex();
+				@include flex-wrap(wrap);
+			}
+		}
+	}
+	& .introjs-hint {
+		& .introjs-hint-dot {
+			border-color: rgba($gray-600, .45);
+		}
+		& .introjs-hint-pulse {
+			background-color: rgba($gray-600, .3);
+			border-color: rgba($gray-600, .3);
+		}
+		&:hover {
+			& .introjs-hint-pulse {
+				border-color:rgba($gray-600, .45);
+				background-color: rgba($gray-600, .45);
+			}
+		}
+	}
+	& .introjs-helperNumberLayer {
+		font-size: rem(36px);
+		background: none;
+		color: $white;
+		font-family: inherit;
+		border: none;
+		text-shadow: none;
+		padding: 0;
+		text-align: center;
+		width: rem(36px);
+		height: rem(36px);
+		line-height: rem(36px);
+		left: rem(-46px);
+		top: 0;
+		
+		@include box-shadow(none);
+	}
+	& .introjs-helperLayer {
+		border: none;
+		
+		@include border-radius($border-radius);
+		@include box-shadow((transparent 0px 0px 1px 2px, rgba($gray-900, .5) 0px 0px 0px 5000px !important));
+	}
+	& .introjs-button {
+		background: $gray-200;
+		border-color: $gray-200;
+		text-shadow: none;
+		color: $gray-900;
+		padding: $btn-padding-y-sm $btn-padding-x-sm;
+		font-size: $btn-font-size-sm;
+		font-weight: $btn-font-weight;
+		min-width: rem(60px);
+		text-align: center;
+
+		@include box-shadow(none);
+		@include border-radius($border-radius);
+
+		&:hover,
+		&:focus {
+			background: $gray-300;
+			border-color: $gray-300;
+
+			@include box-shadow(none);
+		}
+		&.introjs-disabled,
+		&.introjs-disabled:hover,
+		&.introjs-disabled:focus {
+			color: $gray-500;
+			background: $gray-200;
+			border-color: $gray-200;
+		}
+		&.introjs-skipbutton {
+			@if $enable-rtl {
+				margin-right: 0;
+				margin-left: rem(5px);
+			}
+		}
+		&.introjs-prevbutton {
+			@if $enable-rtl {
+				margin-left: auto;
+			} @else {
+				margin-right: auto;
+			}
+		}
+	}
+}

@@ -1,0 +1,228 @@
+@include keyframes(fadeIn) {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+$panel-padding-x: $spacer !default;
+$panel-padding-y: $spacer * 0.8 !default;
+$panel-heading-padding-x: $panel-padding-x !default;
+$panel-heading-padding-y: $panel-padding-y !default;
+$panel-body-padding-x: $spacer !default;
+$panel-body-padding-y: $spacer !default;
+$panel-margin-bottom: $spacer * 1.33 !default;
+$panel-bg-color: $white !default;
+$panel-toolbar-padding-x: $panel-padding-x !default;
+$panel-toolbar-padding-y: $panel-padding-y !default;
+$panel-footer-padding-x: $panel-padding-x !default;
+$panel-footer-padding-y: $panel-padding-y !default;
+.panel {
+	background: $panel-bg-color;
+	border: none;
+	margin-bottom: $panel-margin-bottom;
+	
+	@include box-shadow(none);
+	@include border-radius($border-radius);
+	@include display-flex();
+	@include flex-direction-column();
+	
+	& .panel-body,
+	& .panel-toolbar,
+	& .panel-footer {
+		@include flex(1 1 auto);
+	}
+	& .panel-heading {
+		padding: $panel-heading-padding-y $panel-heading-padding-x;
+		border: none;
+		
+		@include display-flex();
+		@include flex-align(center);
+		@include flex-wrap(nowrap);
+		@include border-top-left-radius($border-radius);
+		@include border-top-right-radius($border-radius);
+		
+		& .panel-title {
+			font-size: $font-size-base;
+			margin: 0;
+			line-height: $line-height-base * 0.9;
+			
+			@include flex(1);
+			
+			& > a {
+				color: inherit;
+				display: block;
+				
+				&:hover,
+				&:focus {
+					text-decoration: none;
+				}
+			}
+		}
+		& .panel-heading-btn {
+			@include display-flex();
+			@include flex-align(center);
+			
+			& > a {
+				& + a {
+					margin-left: rem(5px);
+					
+					@if $enable-rtl {
+						margin-left: 0;
+						margin-right: rem(5px);
+					}
+				}
+			}
+			& .btn-icon {
+				@include display-inline-flex();
+				@include flex-align(center);
+				@include flex-justify-content(center);
+			}
+		}
+		& .tab-overflow {
+			@include flex(1);
+		}
+	}
+	& .panel-body {
+		padding: $panel-body-padding-y $panel-body-padding-x;
+		
+		@include clearfix();
+	}
+	& .panel-toolbar {
+		padding: $panel-toolbar-padding-y $panel-toolbar-padding-x;
+	}
+	& .panel-footer {
+		border-top: 1px solid $border-color;
+		padding: $panel-footer-padding-y $panel-footer-padding-x;
+	}
+	& [class^="col-"] {
+		&.ui-sortable {
+			min-height: 0;
+		}
+	}
+	&.panel-default {
+		& > .panel-heading {
+			background: tint-color($gray-500, 80%);
+			color: $gray-900;
+		}
+	}
+	&.panel-inverse {
+		& > .panel-heading {
+			background: $gray-900;
+			color: $white;
+		}
+	}
+	&.panel-loading {
+		& .panel-body {
+			position: relative;
+			z-index: 0;
+			overflow: hidden;
+			
+			& .panel-loader {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background: $white;
+				opacity: 0.9;
+				z-index: 10;
+				
+				@include animation(fadeIn .2s);
+				@include border-radius(0 0 $border-radius $border-radius);
+				@include display-flex();
+				@include flex-justify-content(center);
+				@include flex-align(center);
+			}
+		}
+	}
+	&.panel-expand {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: 0;
+		overflow: hidden;
+		z-index: $panel-expand-zindex;
+		
+		@include display-flex();
+		@include flex(1);
+		@include flex-direction-column();
+		@include border-radius(0);
+		
+		& > .panel-body,
+		& > .panel-heading,
+		& > .panel-footer {
+			@include border-radius(0);
+		}
+		& > .panel-body {
+			overflow-x: scroll;
+			
+			@include flex(1);
+			
+			& > .slimScrollDiv {
+				height: 100% !important;
+				
+				& > div:not(.slimScrollBar):not(.slimScrollRail) {
+					height: 100% !important;
+				}
+			}
+		}
+		& > .panel-heading {
+			@include flex(0);
+			
+			& .fa-expand:before {
+				content: '\f066';
+			}
+		}
+		& > .hljs-wrapper {
+			max-height: 50%;
+			overflow: scroll;
+		}
+	}
+	&.panel-hover-icon {
+		& .panel-heading {
+			& .panel-heading-btn {
+				& .btn {
+					& i {
+						visibility: hidden;
+					}
+				}
+			}
+			
+			&:hover,
+			&:focus {
+				& .panel-heading-btn {
+					& .btn {
+						& i {
+							visibility: visible;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.panel-with-tabs {
+		& .panel-heading {
+			& > .nav-tabs {
+				margin-top: -$panel-heading-padding-y * 0.5;
+				margin-bottom: -$panel-heading-padding-y;
+				border-bottom: none;
+				
+				& .nav-item {
+					& .nav-link {
+						border: none;
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+}
+.panel-expand {
+	& .app-content {
+		z-index: 9999;
+		
+		& .panel.panel-expand {
+			background: $white;
+		}
+	}
+}

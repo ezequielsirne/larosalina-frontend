@@ -1,0 +1,38 @@
+.sp-original-input-container {
+	& .sp-add-on {
+		min-width: rem(35px);
+		
+		@if $enable-rtl {
+			body & {
+				@include border-radius($border-radius !important);
+				@include border-top-left-radius(0 !important);
+				@include border-bottom-left-radius(0 !important);
+			}
+		}
+		
+		& .sp-colorize {
+			position: relative;
+			overflow: hidden;
+			
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				border: 5px solid $gray-200;
+			}
+		}
+	}
+	& .spectrum.with-add-on {
+		@if $enable-rtl {
+			border-left: 1px solid $border-color;
+			border-right: 0;
+		
+			@include border-radius($border-radius !important);
+			@include border-top-right-radius(0 !important);
+			@include border-bottom-right-radius(0 !important);
+		}
+	}
+}

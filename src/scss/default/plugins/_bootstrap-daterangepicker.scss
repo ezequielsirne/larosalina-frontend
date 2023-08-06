@@ -1,0 +1,261 @@
+body {
+	& .daterangepicker {
+		z-index: 1020;
+		border: none;
+		font-family: inherit;
+		
+		@include border-radius($border-radius-lg);
+		@include box-shadow($box-shadow);
+		@if $enable-rtl {
+			direction: rtl;
+			text-align: right;
+		}
+		@include media-breakpoint-down(md) {
+			width: rem(300px);
+		}
+		
+		&:before {
+			display: none;
+		}
+		
+		& .drp-calendar {
+			max-width: inherit;
+			padding: $spacer;
+			
+			@include media-breakpoint-down(xl) {
+				float: none;
+			}
+			
+			& .calendar-table {
+				& table {
+					& thead {
+						& tr {
+							& th {
+								min-width: auto;
+								width: auto;
+								height: auto;
+								line-height: 1;
+								padding: $spacer / 2;
+								color: $gray-900;
+								font-weight: $font-weight-bolder;
+								border: none;
+								
+								&.prev,
+								&.next {
+									& span {
+										border-color: $gray-900;
+									}
+									&:hover,
+									&:focus {
+										background: $gray-200;
+										color: $gray-900;
+									}
+								}
+								&.month {
+									& .yearselect,
+									& .monthselect {
+										border-color: $border-color;
+										background: $white;
+										
+										@include border-radius($border-radius);
+										@include transition(all .2s linear);
+										
+										&:focus {
+											outline: none;
+											border-color: $input-focus-border-color;
+											
+											@include box-shadow($input-focus-box-shadow);
+										}
+									}
+								}
+							}
+							&:last-child {
+								& th {
+									padding-bottom: $spacer / 2;
+								}
+							}
+						}
+					}
+					& tbody {
+						& tr {
+							& td {
+								min-width: auto;
+								width: auto;
+								height: auto;
+								line-height: 1;
+								padding: $spacer * 0.65;
+								font-weight: $font-weight-bold;
+								color: $gray-800;
+								border: none;
+								
+								&.available {
+									@include border-radius($border-radius);
+									
+									&:hover,
+									&:focus {
+										background: $gray-200;
+									}
+									&.in-range {
+										background: tint-color($form-component-active-bg, 85%);
+										color: shade-color($form-component-active-color, 50%);
+										
+										@include border-radius(0);
+									}
+									&.active {
+										background: $form-component-active-bg;
+										color: $white;
+									}
+									&.start-date {
+										@include border-radius($border-radius 0 0 $border-radius);
+									}
+									&.end-date {
+										@include border-radius(0 $border-radius $border-radius 0);
+									}
+								}
+								&.off {
+									background: none;
+									color: $gray-400;
+								}
+							}
+						}
+					}
+				}
+			}
+			&.left {
+				padding: $spacer / 2 !important;
+				
+				& .calendar-table {
+					padding: 0 !important;
+				}
+			}
+			&.right {
+				padding: $spacer / 2 !important;
+				border-left: 1px solid $border-color;
+				
+				@include media-breakpoint-down(xl) {
+					border-left: none;
+					border-top: 1px solid $border-color;
+				}
+			}
+		}
+		& .drp-buttons {
+			padding: $spacer / 2;
+			border-color: $border-color;
+			
+			@if $enable-rtl {
+				text-align: left;
+			}
+			@include media-breakpoint-down(xl) {
+				text-align: center;
+			}
+			
+			& .btn {
+				font-weight: $font-weight-bold;
+				min-width: rem(80px);
+				margin: 0;
+				
+				& + .btn {
+					@if $enable-rtl {
+						margin-left: 0;
+						margin-right: $spacer / 2;
+					} @else {
+						margin-right: 0;
+						margin-left: $spacer / 2;
+					}
+				}
+			}
+			& .drp-selected {
+				font-weight: $font-weight-bold;
+				color: $gray-600;
+				
+				@if $enable-rtl {
+					margin-right: 0;
+					margin-left: $spacer / 2;
+				}
+				@include media-breakpoint-down(xl) {
+					display: block;
+					padding: 0;
+					margin-bottom: $spacer / 2;
+				}
+			}
+		}
+		&.show-ranges.ltr,
+		&.show-ranges.rtl {
+			& .ranges {
+				position: relative;
+				display: block;
+				
+				@if $enable-rtl {
+					float: right;
+				}
+				@include media-breakpoint-down(xl) {
+					float: none;
+					margin: 0;
+					padding: rem(10px);
+					border-bottom: 1px solid $border-color;
+					overflow: scroll;
+					max-width: rem(340px);
+					
+					@if $enable-rtl {
+						float: none;
+					}
+				}
+				
+				& ul {
+					@include media-breakpoint-down(xl) {
+						width: auto;
+						white-space: nowrap;
+						padding-right: $spacer;
+						
+						@include display-flex();
+						@include flex-wrap(nowrap);
+					}
+					
+					& li {
+						font-weight: $font-weight-bold;
+						color: $gray-600;
+						
+						@include media-breakpoint-down(xl) {
+							margin-right: $spacer !important;
+							
+							@include border-radius($border-radius);
+						}
+						
+						&:hover,
+						&:focus {
+							background: $gray-200;
+							color: $gray-800;
+						}
+						&.active {
+							background: $form-component-active-bg;
+							color: $white;
+							margin-right: rem(-1px);
+						}
+					}
+				}
+			}
+			& .drp-calendar {
+				&.left { 
+					border-left: 1px solid $border-color;
+					
+					@if $enable-rtl {
+						border-left: none !important;
+					}
+					@include media-breakpoint-down(xl) {
+						border-left: none;
+					}
+				}
+				&.right { 
+					@if $enable-rtl {
+						border-right: 1px solid $border-color;
+					}
+					@include media-breakpoint-down(xl) {
+						@if $enable-rtl {
+							border-right: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}

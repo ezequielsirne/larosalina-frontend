@@ -1,0 +1,39 @@
+@mixin helper-color($color, $value) {
+  .text-#{$color},
+  .text-#{$color}-500 {
+  	color: $value !important;
+  }
+  .bg-#{$color},
+  .bg-#{$color}-500 {
+  	background-color: $value !important;
+  }
+  .bg-gradient-#{$color} {
+		background: $value !important;
+		background: -moz-linear-gradient(top, tint-color($value, 40%) 0%, shade-color($value, 40%) 100%) !important;
+		background: -webkit-linear-gradient(top, tint-color($value, 40%) 0%, shade-color($value, 40%) 100%) !important;
+		background: linear-gradient(to bottom, tint-color($value, 40%) 0%, shade-color($value, 40%) 100%) !important;
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='tint-color($value, 10%)', endColorstr='shade-color($value, 5%)',GradientType=0 ) !important;
+  }
+  @for $i from 1 through 9 {
+  	.bg-#{$color}-transparent-#{$i} {
+  		background-color: rgba($value, ($i/10)) !important;
+  	}
+  	.text-#{$color}-transparent-#{$i} {
+  		color: rgba($value, ($i/10)) !important;
+  	}
+  }
+  @for $i from 1 through 4 {
+  	.text-#{$color}-#{$i * 100} {
+  		color: tint-color($value, (100 - ($i * 20))) !important;
+  	}
+  	.bg-#{$color}-#{$i * 100} {
+  		background-color: tint-color($value, (100 - ($i * 20))) !important;
+  	}
+  	.text-#{$color}-#{($i + 5) * 100} {
+  		color: shade-color($value, ($i * 20)) !important;
+  	}
+  	.bg-#{$color}-#{($i + 5) * 100} {
+  		background-color: shade-color($value, ($i * 20)) !important;
+  	}
+  }
+}

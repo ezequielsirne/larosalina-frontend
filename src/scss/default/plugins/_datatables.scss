@@ -1,0 +1,321 @@
+body {
+	& div {
+		&.DTCR_pointer {
+			width: rem(2px);
+			background: $table-component-active-bg;
+			margin-left: rem(-1px);
+		}
+		&.dt-button-info {
+			border: none;
+			padding: $spacer * 2 $spacer;
+			
+			@include border-radius($border-radius);
+			@include box-shadow($box-shadow-lg);
+			
+			& h2 {
+				background: none;
+				font-size: $h2-font-size;
+				font-weight: $headings-font-weight;
+				line-height: $headings-line-height;
+				border: none;
+				padding: 0;
+				margin-bottom: $spacer * 0.5;
+			}
+			& div {
+				padding: 0;
+			}
+		}
+	}
+	
+	& table.dataTable {
+		border-collapse: collapse !important;
+			
+		& thead { 
+			& tr {
+				& th {
+					&.sorting,
+					&.sorting_asc,
+					&.sorting_desc {
+						&:before {
+							display: none;
+						}
+						&:after {
+							opacity: 1;
+							color: lighten($dark, 60%);
+							bottom: rem(8px);
+							
+							@include fontawesome();
+						}
+					}
+			
+					&.sorting {
+						&:after {
+							content: '\f0dc';
+						}
+					}
+					&.sorting_asc {
+						&:after {
+							content: '\f0dd';
+							color: $table-component-active-color;
+						}
+					}
+					&.sorting_desc {
+						&:after {
+							content: '\f0de';
+							color: $table-component-active-color;
+						}
+					}
+					&:focus {
+						outline: none;
+					}
+				}
+			}
+		}
+		& tbody {
+			& tr {
+				& td {
+					&.focus {
+						outline: none;
+						z-index: 10;
+						position: relative;
+						
+						@include box-shadow(inset 0 0 0 2px $table-component-active-bg);
+					}
+					&:focus {
+						outline: none;
+					}
+				}
+				
+				&.selected {
+					& td {
+						background: $yellow-100 !important;
+						color: $yellow-800;
+						font-weight: $font-weight-bold;
+						
+						@include box-shadow(none);
+					}
+				}
+				&.dt-rowReorder-moving {
+					outline: 2px solid lighten($dark, 45%);
+				}
+			}
+		}
+		&.table.table-bordered {
+			& th,
+			& td {
+				border-left-width: 1px;
+			}
+			& > :not(caption) > * {
+				border-color: $table-border-color;
+			} 
+		}
+		&.fixedHeader-floating {
+			z-index: $app-header-zindex + 10;
+		}
+		&.dt-rowReorder-float {
+			outline: 2px solid $table-component-active-bg;
+		}
+	}
+	& .DTFC_ScrollWrapper {
+		margin: 0 0 $spacer;
+		
+		@include box-shadow(inset 0 -1px 0 0 $border-color);
+		
+		& .DTFC_LeftHeadWrapper {
+			& .DTFC_Cloned {
+				margin: 0 !important;
+			}
+		}
+		& .DTFC_LeftWrapper {
+			@include box-shadow(inset 0 -1px 0 0 $border-color);
+		}
+		& .DTFC_LeftBodyLiner {
+			& .DTFC_Cloned {
+				margin: rem(-4px) 0 0 !important;
+			}
+		}
+		& .dataTables_scroll {
+			@include box-shadow(inset 0 -1px 0 0 $border-color);
+			
+			& .dataTables_scrollBody {
+				& .dataTable {
+					margin: 0 !important;
+				}
+			}
+		}
+	}
+}
+.dataTables_wrapper {
+	&.dt-bootstrap,
+	&.dt-bootstrap4 {
+		display: block;
+		
+		& .dataTables_length {
+			margin-bottom: $spacer;
+			
+			@include media-breakpoint-up(md) {
+				@include display-inline-flex();
+			}
+			& .custom-select {
+				padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
+				background-color: $form-select-bg;
+				background-image: escape-svg($form-select-indicator);
+				background-repeat: no-repeat;
+				background-position: $form-select-bg-position;
+				background-size: $form-select-bg-size;
+				
+				@include border-radius($border-radius);
+				@include appearance(none);
+			}
+			& + .dt-buttons {
+				@include media-breakpoint-up(md) {
+					margin-left: rem(10px);
+				}
+			}
+			& label {
+				margin-left: auto;
+				color: $gray-800;
+				font-weight: $font-weight-bold;
+				margin: 0;
+				
+				@include display-flex();
+				@include flex-align(center);
+				@include flex-justify-content(center);
+				
+				& .form-control {
+					margin: 0 $spacer / 2;
+					
+					@include border-radius($border-radius);
+				}
+			}
+		}
+		& .dataTables_filter {
+			margin-bottom: $spacer;
+			
+			@include media-breakpoint-up(md) {
+				float: right;
+				
+				@include display-inline-flex();
+				@if $enable-rtl {
+					float: left;
+				}
+			}
+			
+			& label {
+				color: $gray-800;
+				font-weight: $font-weight-bold;
+				margin: 0;
+				
+				@include display-flex();
+				@include flex-align(center);
+				@include flex-justify-content(center);
+				
+				& .form-control {
+					display: block;
+					width: rem(260px);
+					height: $input-height;
+					
+					@include border-radius($border-radius);
+					
+					@if $enable-rtl {
+						margin-left: 0;
+						margin-right: $spacer / 2;
+					} @else {
+						margin-left: $spacer / 2;
+					}
+					@include media-breakpoint-down(md) {	
+						width: 100%;
+					}
+				}
+			}
+		}
+		& .dataTable {
+			margin: 0 0 $spacer !important;
+			
+			&.collapsed {
+				& tbody {
+					& tr {
+						& td {
+							& .dtr-details {
+								& > li {
+									border-bottom: 1px solid $border-color;
+								}
+							}
+							&:first-child {
+								&:before {
+									background: $gray-400 !important;
+									color: $gray-800 !important;
+									border: none !important;
+									top: rem(19px) !important;
+									left: rem(8px) !important;
+									line-height: rem(16px) !important;
+									font-weight: bold !important;
+									height: rem(16px) !important;
+									width: rem(16px) !important;
+									text-align: center !important;
+									text-indent: 0 !important;
+									font-size: rem(14px) !important;
+									
+									@include box-shadow(none !important);
+									@include border-radius($border-radius-sm !important);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		& .dataTables_info {
+			font-weight: $font-weight-bold;
+			color: $gray-600;
+			
+			@include media-breakpoint-down(xs) {
+				padding-bottom: $spacer / 2;
+			}
+		}
+		& .dataTables_paginate {
+			@include display-flex();
+			
+			& .pagination {
+				@include flex-wrap(wrap);
+				@include media-breakpoint-up(sm) {
+					@if $enable-rtl {
+						margin-left: 0;
+						margin-right: auto;
+					} @else {
+						margin-left: auto;
+						margin-right: 0;
+					}
+				}
+				@include media-breakpoint-down(xs) {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+		}
+		& .dt-buttons {
+			margin-bottom: rem(15px);
+				
+			& .btn {
+				padding: rem(6px) rem(12px);
+				line-height: rem(20px);
+			}
+		}
+		& .dataTables_scroll {
+			margin-bottom: $spacer !important;
+			
+			& .dataTables_scrollHead {
+				& .dataTables_scrollHeadInner {
+					& .dataTable {
+						margin-bottom: 0 !important;
+					}
+				}
+			}
+			& .dataTables_scrollBody {
+				& > .dataTable {
+					margin-top: rem(-4px) !important;
+				}
+			}
+		}
+	}
+}

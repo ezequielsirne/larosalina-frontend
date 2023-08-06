@@ -1,0 +1,220 @@
+.datepicker {
+	body & {
+		color: $gray-800;
+		
+		@include border-radius($border-radius-lg);
+		@if $enable-rtl {
+			direction: rtl;
+		}
+		
+		& table {
+			width: 100%;
+		}
+		& .datepicker-days,
+		& .datepicker-months,
+		& .datepicker-years,
+		& .datepicker-decades,
+		& .datepicker-centuries {
+			& table {
+				& thead {
+					& tr {
+						& th {
+							&.prev,
+							&.next,
+							&.datepicker-switch {
+								line-height: $line-height-base;
+								padding: $spacer / 2;
+								
+								@include border-radius($border-radius);
+								
+								&:hover,
+								&:focus {
+									background: $gray-200;
+									
+									&:before {
+										color: $gray-800;
+									}
+								}
+							}
+							&.prev,
+							&.next {
+								color: transparent;
+								width: 15%;
+								position: relative;
+								
+								@include fontawesome();
+								
+								&:before {
+									color: $gray-500;
+									position: absolute;
+									font-size: $font-size-lg;
+									height: $font-size-lg;
+									top: 50%;
+									margin-top: -$font-size-lg / 2;
+									line-height: 1;
+								}
+								& i {
+									display: none;
+								}
+							}
+							&.prev {
+								&:before {
+									content: '\f104';
+								}
+							}
+							&.next {
+								&:before {
+									content: '\f105';
+								}
+							}
+							&.datepicker-switch {
+								width: auto;
+							}
+							&.dow {
+								padding: $spacer / 2 0;
+							}
+						}
+					}
+				}
+				& tbody {
+					& tr {
+						& td {
+							padding: $spacer / 2;
+							
+							& span {
+								&.decade,
+								&.year,
+								&.month,
+								&.century {
+									font-weight: $font-weight-bold;
+									color: $gray-600;
+									text-shadow: none;
+									
+									@include border-radius($border-radius);
+									
+									&:hover,
+									&:focus {
+										background: $gray-200;
+									}
+									&.focused {
+										background: $gray-200;
+										color: $gray-800;
+									}
+									&.active {
+										background: $form-component-active-bg !important;
+										color: $white;
+									}
+								}
+							}
+							&.day {
+								font-weight: $font-weight-bold;
+								color: $gray-700;
+								padding: $spacer / 2;
+									
+								@include border-radius($border-radius);
+								
+								&:hover,
+								&:focus,
+								&.selected,
+								&.highlighted,
+								&.range {
+									background: $gray-200;
+									text-shadow: none;
+								}
+								&.today {
+									background: tint-color($form-component-active-bg, 75%) !important;
+									color: shade-color($form-component-active-bg, 75%);
+								}
+								&.active {
+									background: $form-component-active-bg !important;
+									color: $white;
+									text-shadow: none !important;
+								}
+								&.range {
+									@include border-radius(0);
+								}
+								&.range-start {
+									@include border-radius($border-radius 0 0 $border-radius);
+								}
+								&.range-end {
+									@include border-radius(0 $border-radius $border-radius 0);
+								}
+								&.old {
+									color: $gray-500;
+								}
+								&.new {
+									color: $gray-400;
+								}
+								&.disabled {
+									color: $gray-200;
+									
+									&:hover,
+									&:focus {
+										background: none;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		&.datepicker-inline {
+			display: block;
+			width: auto;
+			padding: 0;
+		}
+		&.dropdown-menu {
+			min-width: rem(250px);
+			width: rem(320px);
+			border: none;
+			font-family: inherit;
+			font-size: $font-size-base;
+			
+			@include box-shadow($box-shadow);
+			@include media-breakpoint-down(xs) {
+				width: rem(250px);
+			}
+			
+			&:before {
+				display: none;
+			}
+			&.datepicker-orient-left {
+				&:after {
+					left: $spacer;
+				}
+			}
+			&.datepicker-orient-right {
+				&:after {
+					right: $spacer;
+				}
+			}
+			&.datepicker-orient-top {
+				margin-bottom: $spacer / 2;
+			}
+			&.datepicker-orient-bottom {
+				margin-top: $spacer / 2;
+			}
+		}
+	}
+	& .input-daterange {
+		& .input-group-addon {
+			margin: 0;
+			font-weight: 600;
+			background: lighten($dark, 65%);
+			color: lighten($dark, 30%);
+			
+			@include display-flex();
+			@include flex-align(center);
+			@include border-radius(0);
+			
+			& + .form-control {
+				@include border-radius(0 $border-radius $border-radius 0);
+				@if $enable-rtl {
+					@include border-radius(0);
+				}
+			}
+		}
+	}
+}

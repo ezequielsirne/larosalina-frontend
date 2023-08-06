@@ -1,0 +1,260 @@
+.widget-chat {
+	background: $white;
+	
+	& .widget-chat-header {
+		padding: $spacer;
+		
+		@include display-flex();
+		@include flex-align(center);
+		
+		& .widget-chat-header-icon {
+			@if $enable-rtl {
+				padding-left: $spacer;
+			} @else {
+				padding-right: $spacer;
+			}
+		}
+		& .widget-chat-header-content {
+			@include flex(1);
+		}
+		& .widget-chat-header-title {
+			font-size: $h6-font-size;
+			margin: 0;
+		}
+		& .widget-chat-header-desc {
+			margin: 0;
+			color: $gray-600;
+		}
+	}
+	& .widget-chat-body {
+		padding: $spacer;
+		background: $gray-200;
+	}
+	& .widget-chat-item {
+		color: $dark;
+		position: relative;
+		min-height: rem(38px);
+		padding: $spacer / 3 0;
+	}
+	& .widget-chat-media {
+		width: rem(38px);
+		height: rem(38px);
+		position: absolute;
+		bottom: rem(3px);
+		overflow: hidden;
+		
+		@include border-radius($border-radius * 10);
+		@include display-flex();
+		@include flex-justify-content(center);
+		@include flex-align(center);
+		@if $enable-rtl {
+			right: 0;
+		} @else {
+			left: 0;
+		}
+		
+		& img {
+			max-width: 100%;
+			max-height: 100%;
+			display: block;
+		}
+	}
+	& .widget-chat-info {
+		@if $enable-rtl {
+			margin-right: rem(12px);
+		} @else {
+			margin-left: rem(12px);
+		}
+	}
+	& .widget-chat-info-container {
+		background: $white;
+		display: inline-block;
+		padding: $spacer / 2 $spacer * 0.75;
+		position: relative;
+		color: $white;
+		
+		@include border-radius($border-radius * 4);
+	}
+	& .widget-chat-message {
+		font-weight: $font-weight-bold;
+		color: $gray-800;
+		
+		&:before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			border: 0 solid transparent;
+			border-top-width: rem(15px);
+			border-radius: 50%;
+			width: rem(35px);
+			height: rem(35px);
+			
+			@if $enable-rtl {
+				right: rem(-24px);
+				border-left-width: rem(10px);
+				border-left-color: $white;
+				
+				@include transform(rotate(-10deg));
+			} @else {
+				left: rem(-24px);
+				border-right-width: rem(10px);
+				border-right-color: $white;
+				@include transform(rotate(10deg));
+			}
+		}
+		&:after {
+			content: '';
+			display: inline-block;
+			width: rem(60px);
+			height: rem(12px);
+		}
+	}
+	& .widget-chat-name {
+		font-weight: $font-weight-bold;
+	}
+	& .widget-chat-time {
+		position: absolute;
+		bottom: rem(8px);
+		font-style: italic;
+		color: $gray-500;
+		font-weight: $font-weight-bold;
+		font-size: $font-size-base * 0.8;
+		
+		@if $enable-rtl {
+			left: rem(12px);
+		} @else {
+			right: rem(12px);
+		}
+	}
+	& .with-media {
+		& .widget-chat-info {
+			min-width: 60%;
+			
+			@if $enable-rtl {
+				margin-right: rem(53px);
+			} @else {
+				margin-left: rem(53px);
+			}
+		}
+		& .end {
+			& .widget-chat-info {
+				@if $enable-rtl {
+					margin-left: rem(53px);
+				} @else {
+					margin-right: rem(53px);
+				}
+			}
+		}
+	}
+	& .end {
+		& .widget-chat-media {
+			@if $enable-rtl {
+				left: 0;
+				right: auto;
+			} @else {
+				left: auto;
+				right: 0;
+			}
+		}
+		& .widget-chat-info {
+			@if $enable-rtl {
+				margin-left: rem(12px);
+				margin-right: 0;
+				text-align: left;
+			} @else {
+				margin-right: rem(12px);
+				margin-left: 0;
+				text-align: right;
+			}
+		}
+		& .widget-chat-time {
+			@if $enable-rtl {
+				right: rem(12px);
+				left: auto;
+			} @else {
+				right: auto;
+				left: rem(12px);
+			}
+		}
+		& .widget-chat-message {
+			&:after {
+				@if $enable-rtl {
+					float: right;
+				} @else {
+					float: left;
+				}
+			}
+			&:before {
+				bottom: rem(-5px);
+				
+				@if $enable-rtl {
+					left: rem(-24px);
+					right: auto;
+					border-left-width: 0;
+					border-left-color: transparent;
+					border-right-width: rem(10px);
+					border-right-color: $white;
+				} @else {
+					left: auto;
+					right: rem(-24px);
+					border-right-width: 0;
+					border-right-color: transparent;
+					border-left-width: rem(10px);
+					border-left-color: $white;
+				}
+			}
+		}
+		&.with-media {
+			& .widget-chat-info {
+				@if $enable-rtl {
+					margin-left: rem(53px);
+				} @else {
+					margin-right: rem(53px);
+				}
+			}
+		}
+	}
+}
+.inverse-mode {
+	&.widget-chat {
+		background: $gray-800;
+		
+		& .widget-chat-header-title {
+			color: $white;
+		}
+		& .widget-chat-header-desc {
+			color: $gray-400;
+		}
+		& .widget-chat-body {
+			background: $gray-900;
+		}
+		& .widget-chat-info-container {
+			background: $gray-700;
+			
+			& .widget-chat-message {
+				color: $white;
+				
+				&:before {
+					@if $enable-rtl {
+						border-left-color: $gray-700;
+					} @else {
+						border-right-color: $gray-700;
+					}
+				}
+			}
+		}
+		& .end {
+			& .widget-chat-info-container {
+				& .widget-chat-message {
+					&:before {
+						@if $enable-rtl {
+							border-right-color: $gray-700;
+						} @else {
+							border-left-color: $gray-700;
+						}
+					}
+				}
+			}
+		}
+	}
+}

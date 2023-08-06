@@ -1,0 +1,57 @@
+.todolist {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	
+	& .todolist-item {
+		@include display-flex();
+		
+		& .todolist-input {
+			padding: $spacer * 0.5 $spacer * 0.75;
+			
+			@include display-flex();
+			@include flex-align(center);
+			
+			& .form-check {
+				padding-left: rem(18px);
+				margin: 0;
+				
+				& .form-check-input {
+					width: rem(18px);
+					margin-left: rem(-18px);
+					
+					&:checked {
+						border-color: $teal;
+						background-color: $teal;
+					}
+				}
+			}
+			& + .todolist-label {
+				@if $enable-rtl {
+					border-right: 1px solid $gray-300;
+				} @else {
+					border-left: 1px solid $gray-300;
+				}
+			}
+		}
+		& .todolist-label {
+			padding: $spacer * 0.5 $spacer * 0.75;
+			
+			@include flex(1);
+		}
+		&:hover {
+			background: $gray-200;
+		}
+		&.active {
+			background: tint-color($teal, 90%);
+			
+			& .todolist-label {
+				text-decoration: line-through;
+			}
+		}
+		
+		& + .todolist-item {
+			border-top: 1px solid $gray-300;
+		}
+	}
+}

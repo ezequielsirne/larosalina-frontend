@@ -1,0 +1,219 @@
+.btn {
+	font-weight: $font-weight-bold;
+	
+	&.btn-icon {
+		width: rem(28px);
+		height: rem(28px);
+		padding: 0;
+		border: none;
+		line-height: rem(28px);
+		text-align: center;
+		font-size: rem(14px);
+		
+		@include border-radius(28px);
+		
+		&.btn-xs {
+			width: rem(16px);
+			height: rem(16px);
+			font-size: rem(8px);
+			line-height: rem(16px);
+		}
+		&.btn-sm {
+			width: rem(22px);
+			height: rem(22px);
+			font-size: rem(11px);
+			line-height: rem(22px);
+		}
+		&.btn-lg {
+			width: rem(34px);
+			height: rem(34px);
+			font-size: rem(17px);
+			line-height: rem(34px);
+		}
+	}
+	&.btn-theme {
+		padding: rem(12px) rem(30px);
+		font-weight: $font-weight-bold;
+	
+		@include border-radius($border-radius-lg);
+	}
+	&.btn-xs {
+		font-size: rem(12px);
+		line-height: rem(18px);
+		padding: rem(1px) rem(5px);
+	}
+}
+
+@each $color, $value in $theme-colors {
+	@if $color == 'primary' {
+		$value: $blue;
+	}
+  .btn-#{$color} {
+    @if $color == 'default' {
+    	@include button-variant(
+    		$value,                     // background
+    		$value,                     // border
+    		$gray-900,                  // color
+    		$gray-400,                  // hover-bg
+    		$gray-400,                  // hover-border
+    		$gray-900,                  // hover-color
+    		$gray-400,                  // active-bg
+    		$gray-400,                  // active-border
+    		$gray-900,                  // active-color
+    		tint-color($gray-400, 25%), // disabled-bg
+    		tint-color($gray-400, 25%), // disabled-border
+    		$gray-900                   // disabled-color
+    	);
+    	
+    	.btn-group > .btn + &,
+    	.input-group > .btn + &,
+    	.input-group > .btn + .dropdown-menu + & {
+    		@if $enable-rtl {
+    			border-right: 1px solid $gray-400;
+    		} @else {
+    			border-left: 1px solid $gray-400;
+    		}
+    	}
+    } @else {
+    	@include button-variant(
+    		$value,                   // background
+    		$value,                   // border
+    		$white,                   // color
+    		shade-color($value, 25%), // hover-bg
+    		shade-color($value, 25%), // hover-border
+    		$white,                   // hover-color
+    		shade-color($value, 25%), // active-bg
+    		shade-color($value, 25%), // active-border
+    		$white,                   // active-color
+    		tint-color($value, 25%),  // disabled-bg
+    		tint-color($value, 25%),  // disabled-border
+    		$white                    // disabled-color
+    	);
+    	
+    	.btn-group > .btn + &,
+    	.input-group > .btn + &,
+    	.input-group > .btn + .dropdown-menu + & {
+    		@if $enable-rtl {
+    			border-right: 1px solid shade-color($value, 25%);
+    		} @else {
+    			border-left: 1px solid shade-color($value, 25%);
+    		}
+    	}
+    }
+  }
+  .btn-outline-#{$color} {
+    @if $color == 'default' {
+    	@include button-outline-variant(
+				$value,    // color
+				$gray-900, // hover-color
+				$value,    // active-bg
+				$value,    // active-border
+				$gray-900  // active-color
+			);
+    } @else {
+    	@include button-outline-variant(
+				$value, // color
+				$white, // hover-color
+				$value, // active-bg
+				$value, // active-border
+				$white  // active-color
+			);
+		}
+  }
+}
+
+@each $color, $value in $colors {
+  .btn-#{$color} {
+    @if $color == 'yellow' {
+    	@include button-variant(
+    		$value,                     // background
+    		$value,                     // border
+    		$gray-900,                  // color
+    		shade-color($value, 25%),  // hover-bg
+    		shade-color($value, 25%),  // hover-border
+    		$gray-900,                  // hover-color
+    		shade-color($value, 25%),  // active-bg
+    		shade-color($value, 25%),  // active-border
+    		$gray-900,                  // active-color
+    		tint-color($value, 25%),    // disabled-bg
+    		tint-color($value, 25%),    // disabled-border
+    		$gray-900                   // disabled-color
+    	);
+    	.btn-group > .btn + &,
+    	.input-group > .btn + &,
+    	.input-group > .btn + .dropdown-menu + & {
+    		@if $enable-rtl {
+    			border-right: 1px solid shade-color($value, 25%);
+    		} @else {
+    			border-left: 1px solid shade-color($value, 25%);
+    		}
+    	}
+    } @else if $color == 'white' {
+    	@include button-variant(
+    		$value,                     // background
+    		$gray-400,                  // border
+    		$gray-900,                  // color
+    		$gray-200,                  // hover-bg
+    		$gray-500,                  // hover-border
+    		$gray-900,                  // hover-color
+    		$gray-200,                  // active-bg
+    		$gray-500,                  // active-border
+    		$gray-900,                  // active-color
+    		tint-color($gray-200, 25%), // disabled-bg
+    		tint-color($gray-500, 25%), // disabled-border
+    		$gray-900                   // disabled-color
+    	);
+		} @else {
+    	@include button-variant(
+    		$value,                   // background
+    		$value,                   // border
+    		$white,                   // color
+    		shade-color($value, 25%), // hover-bg
+    		shade-color($value, 25%), // hover-border
+    		$white,                   // hover-color
+    		shade-color($value, 25%), // active-bg
+    		shade-color($value, 25%), // active-border
+    		$white,                   // active-color
+    		tint-color($value, 25%),  // disabled-bg
+    		tint-color($value, 25%),  // disabled-border
+    		$white                    // disabled-color
+    	);
+    	.btn-group > .btn + &,
+    	.input-group > .btn + &,
+    	.input-group > .btn + .dropdown-menu + & {
+    		@if $enable-rtl {
+    			border-right: 1px solid shade-color($value, 25%);
+    		} @else {
+    			border-left: 1px solid shade-color($value, 25%);
+    		}
+    	}
+		}
+  }
+  .btn-outline-#{$color} {
+    @if $color == 'yellow' {
+    	@include button-outline-variant(
+				$value,    // color
+				$gray-900, // hover-color
+				$value,    // active-bg
+				$value,    // active-border
+				$gray-900  // active-color
+			);
+    } @else if $color == 'white' {
+    	@include button-outline-variant(
+				$value,    // color
+				$gray-900, // hover-color
+				$value,    // active-bg
+				$value,    // active-border
+				$gray-900  // active-color
+			);
+		} @else {
+    	@include button-outline-variant(
+				$value, // color
+				$white, // hover-color
+				$value, // active-bg
+				$value, // active-border
+				$white  // active-color
+			);
+		}
+  }
+}

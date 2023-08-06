@@ -1,0 +1,48 @@
+.widget {
+	overflow: hidden;
+	margin-bottom: rem(20px);
+	background: $white;
+	color: inherit;
+	padding: 0;
+	
+	& .widget-header {
+		border-bottom: 1px solid $gray-300;
+		
+		@include display-flex();
+		@include flex-align(center);
+		
+		& .widget-header-title {
+			margin: 0;
+			font-size: $font-size-base;
+			padding: $spacer * 0.66 $spacer;
+			
+			@include flex(1);
+		}
+		& .widget-header-icon {
+			padding: $spacer * 0.66 $spacer;
+			
+			& + .widget-header-icon {
+				@if $enable-rtl {
+					padding-right: 0;
+				} @else {
+					padding-left: 0;
+				}
+			}
+		}
+	}
+	& .widget-body {
+		padding: $spacer;
+	}
+	
+	&.inverse-mode {
+		background: $gray-800;
+		
+		& .widget-header {
+			border-color: $gray-600;
+			color: $white;
+		}
+		& hr {
+			background: $gray-600;
+		}
+	}
+}

@@ -1,0 +1,587 @@
+/*
+   1.0  GLOBAL - Color system
+   2.0  GLOBAL - RTL
+   3.0  GLOBAL - Component Color 
+   4.0  GLOBAL - Grid & Container
+   5.0  GLOBAL - Body
+   6.0  GLOBAL - Font
+   7.0  GLOBAL - Radius
+   8.0  GLOBAL - Box Shadow
+   9.0  GLOBAL - Caret
+   10.0 App    - Component
+   11.0 App    - Zindex
+   12.0 App    - POS System
+   13.0 App    - Login Register
+   14.0 Form   - Component
+   15.0 Form   - Input
+   16.0 Table  - General
+   17.0 UI - Pagination
+   18.0 UI - Button
+   19.0 UI - Modal
+   20.0 UI - List Group
+   21.0 UI - Alert
+   22.0 UI - Card
+   23.0 UI - Dropown
+   24.0 UI - Progress
+   25.0 UI - Toast
+   26.0 UI - Badge
+   27.0 UI - Nav Link
+   28.0 UI - Nav Tabs
+   29.0 UI - Nav Pills
+*/
+
+// 1.0 GLOBAL - Color system
+
+$gray-100:    #f8f9fa !default;
+$gray-200:    #e9ecef !default;
+$gray-300:    #dee2e6 !default;
+$gray-400:    #ced4da !default;
+$gray-500:    #adb5bd !default;
+$gray-600:    #6c757d !default;
+$gray-700:    #495057 !default;
+$gray-800:    #2d353c !default;
+$gray-900:    #20252a !default;
+$black:       #000000 !default;
+$blue:        #348fe2 !default;
+$cyan:        #49b6d6 !default;
+$dark:        #2d353c !default;
+$dark-darker: #1a2229 !default;
+$green:       #32a932 !default;
+$indigo:      #8753de !default;
+$lime:        #90ca4b !default;
+$light:       #f2f3f4 !default;
+$orange:      #f59c1a !default;
+$purple:      #727cb6 !default;
+$pink:        #fb5597 !default;
+$red:         #ff5b57 !default;
+$silver:      #b6c2c9 !default;
+$teal:        #00acac !default;
+$white:       #FFFFFF !default;
+$yellow:      #ffd900 !default;
+$inverse:     $dark !default;
+$link-color:  $blue !default;
+$colors: (
+	'blue':      $blue,
+  'indigo':    $indigo,
+  'purple':    $purple,
+  'pink':      $pink,
+  'red':       $red,
+  'orange':    $orange,
+  'yellow':    $yellow,
+  'green':     $green,
+	'lime':      $lime,
+  'teal':      $teal,
+  'cyan':      $cyan,
+  'white':     $white,
+  'black':     $black,
+	'silver':    $silver,
+	'light':     $light,
+  'gray':      $gray-500,
+  'gray-dark': $gray-800,
+	'muted':     darken($silver, 30%),
+	'gray-100':  $gray-100,
+	'gray-200':  $gray-200,
+	'gray-300':  $gray-300,
+	'gray-400':  $gray-400,
+	'gray-500':  $gray-500,
+	'gray-600':  $gray-600,
+	'gray-700':  $gray-700,
+	'gray-800':  $gray-800,
+	'gray-900':  $gray-900
+);
+
+$primary-color: 'teal' !default;
+$primary:       map-get($colors, $primary-color) !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $orange !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-900 !default;
+$theme-colors: (
+	'default':    $gray-200,
+  'inverse':    $gray-800,
+  'primary':    $primary,
+  'secondary':  $secondary,
+  'success':    $teal,
+  'info':       $info,
+  'warning':    $warning,
+  'danger':     $danger,
+  'light':      $light,
+  'dark':       $dark
+);
+
+$blue-100:   tint-color($blue, 80%) !default;
+$blue-200:   tint-color($blue, 60%) !default;
+$blue-300:   tint-color($blue, 40%) !default;
+$blue-400:   tint-color($blue, 20%) !default;
+$blue-500:   $blue !default;
+$blue-600:   shade-color($blue, 20%) !default;
+$blue-700:   shade-color($blue, 40%) !default;
+$blue-800:   shade-color($blue, 60%) !default;
+$blue-900:   shade-color($blue, 80%) !default;
+
+$indigo-100: tint-color($indigo, 80%) !default;
+$indigo-200: tint-color($indigo, 60%) !default;
+$indigo-300: tint-color($indigo, 40%) !default;
+$indigo-400: tint-color($indigo, 20%) !default;
+$indigo-500: $indigo !default;
+$indigo-600: shade-color($indigo, 20%) !default;
+$indigo-700: shade-color($indigo, 40%) !default;
+$indigo-800: shade-color($indigo, 60%) !default;
+$indigo-900: shade-color($indigo, 80%) !default;
+
+$purple-100: tint-color($purple, 80%) !default;
+$purple-200: tint-color($purple, 60%) !default;
+$purple-300: tint-color($purple, 40%) !default;
+$purple-400: tint-color($purple, 20%) !default;
+$purple-500: $purple !default;
+$purple-600: shade-color($purple, 20%) !default;
+$purple-700: shade-color($purple, 40%) !default;
+$purple-800: shade-color($purple, 60%) !default;
+$purple-900: shade-color($purple, 80%) !default;
+
+$pink-100:   tint-color($pink, 80%) !default;
+$pink-200:   tint-color($pink, 60%) !default;
+$pink-300:   tint-color($pink, 40%) !default;
+$pink-400:   tint-color($pink, 20%) !default;
+$pink-500:   $pink !default;
+$pink-600:   shade-color($pink, 20%) !default;
+$pink-700:   shade-color($pink, 40%) !default;
+$pink-800:   shade-color($pink, 60%) !default;
+$pink-900:   shade-color($pink, 80%) !default;
+
+$red-100:    tint-color($red, 80%) !default;
+$red-200:    tint-color($red, 60%) !default;
+$red-300:    tint-color($red, 40%) !default;
+$red-400:    tint-color($red, 20%) !default;
+$red-500:    $red !default;
+$red-600:    shade-color($red, 20%) !default;
+$red-700:    shade-color($red, 40%) !default;
+$red-800:    shade-color($red, 60%) !default;
+$red-900:    shade-color($red, 80%) !default;
+
+$orange-100: tint-color($orange, 80%) !default;
+$orange-200: tint-color($orange, 60%) !default;
+$orange-300: tint-color($orange, 40%) !default;
+$orange-400: tint-color($orange, 20%) !default;
+$orange-500: $orange !default;
+$orange-600: shade-color($orange, 20%) !default;
+$orange-700: shade-color($orange, 40%) !default;
+$orange-800: shade-color($orange, 60%) !default;
+$orange-900: shade-color($orange, 80%) !default;
+
+$yellow-100: tint-color($yellow, 80%) !default;
+$yellow-200: tint-color($yellow, 60%) !default;
+$yellow-300: tint-color($yellow, 40%) !default;
+$yellow-400: tint-color($yellow, 20%) !default;
+$yellow-500: $yellow !default;
+$yellow-600: shade-color($yellow, 20%) !default;
+$yellow-700: shade-color($yellow, 40%) !default;
+$yellow-800: shade-color($yellow, 60%) !default;
+$yellow-900: shade-color($yellow, 80%) !default;
+
+$green-100:  tint-color($green, 80%) !default;
+$green-200:  tint-color($green, 60%) !default;
+$green-300:  tint-color($green, 40%) !default;
+$green-400:  tint-color($green, 20%) !default;
+$green-500:  $green !default;
+$green-600:  shade-color($green, 20%) !default;
+$green-700:  shade-color($green, 40%) !default;
+$green-800:  shade-color($green, 60%) !default;
+$green-900:  shade-color($green, 80%) !default;
+
+$teal-100:   tint-color($teal, 80%) !default;
+$teal-200:   tint-color($teal, 60%) !default;
+$teal-300:   tint-color($teal, 40%) !default;
+$teal-400:   tint-color($teal, 20%) !default;
+$teal-500:   $teal !default;
+$teal-600:   shade-color($teal, 20%) !default;
+$teal-700:   shade-color($teal, 40%) !default;
+$teal-800:   shade-color($teal, 60%) !default;
+$teal-900:   shade-color($teal, 80%) !default;
+
+$cyan-100:   tint-color($cyan, 80%) !default;
+$cyan-200:   tint-color($cyan, 60%) !default;
+$cyan-300:   tint-color($cyan, 40%) !default;
+$cyan-400:   tint-color($cyan, 20%) !default;
+$cyan-500:   $cyan !default;
+$cyan-600:   shade-color($cyan, 20%) !default;
+$cyan-700:   shade-color($cyan, 40%) !default;
+$cyan-800:   shade-color($cyan, 60%) !default;
+$cyan-900:   shade-color($cyan, 80%) !default;
+
+@if $primary-color == 'black' {
+	$primary: lighten($gray-900, 20%);
+}
+
+
+// 2.0 GLOBAL - RTL
+
+$enable-rtl:                        false !default;
+
+
+// 3.0 GLOBAL - Component Color 
+
+$component-active-bg:                          $blue !default;
+$component-active-color:                       $white !default;
+$custom-control-indicator-checked-disabled-bg: rgba($blue, .5) !default;
+
+
+// 4.0 GLOBAL - Grid & Container
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1400px,
+  xxxl: 1800px
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 750px,
+  lg: 960px,
+  xl: 1170px
+) !default;
+$spacer:                            rem-default(15px) !default;
+$grid-gutter-width:                 20px !default;
+$enable-negative-margins:           true !default;
+
+
+// 5.0 GLOBAL - Body
+
+$body-bg:                           $gray-300 !default;
+$body-color:                        $gray-800 !default;
+$body-letter-spacing:               0 !default;
+$border-color:                      $gray-400 !default;
+$border-width:                      1px !default;
+
+
+// 6.0 GLOBAL - Font
+
+$font-family-base:                  'Open Sans', sans-serif !default;
+$font-size-base:                    rem-default(12px) !default;
+$font-size-sm:					            rem-default(11px) !default;
+$font-size-lg:					            rem-default(14px) !default;
+$line-height-base:			            1.5 !default;
+$line-height-sm:				            1.2 !default;
+$line-height-lg:				            1.8 !default;
+$font-weight-base:                  400 !default;
+$font-weight-bold:                  600 !default;
+$font-weight-bolder:                700 !default;
+$headings-font-weight:              600 !default;
+$paragraph-margin-bottom:           rem(15px) !default;
+
+
+// 7.0 GLOBAL - Radius
+
+$border-radius:                     4px !default;
+$border-radius-lg:                  6px !default;
+$border-radius-sm:                  3px !default;
+
+
+// 8.0 GLOBAL - Box Shadow
+
+$box-shadow:                        0 .5rem 1rem rgba($black, .15) !default;
+$box-shadow-sm:                     0 .125rem .25rem rgba($black, .075) !default;
+$box-shadow-lg:                     0 1rem 3rem rgba($black, .175) !default;
+$box-shadow-inset:                  inset 0 1px 2px rgba($black, .075) !default;
+
+
+// 9.0 GLOBAL - Caret
+
+$enable-caret:                      false !default;
+
+
+// 10.0 App - Component
+
+$app-boxed-layout-width:            rem(1280px) !default;
+
+$app-header-height:                 rem(50px) !default;
+$app-header-height-sm:              rem(50px) !default;
+$app-header-box-shadow:             none !default;
+$app-header-scroll-box-shadow:      0 0 16px rgba($black, .15) !default;
+$app-header-inverse-bg:             $gray-900 !default;
+
+$app-top-menu-height:               rem(40px) !default;
+$app-top-menu-component-padding-x:  rem(20px) !default;
+$app-top-menu-component-padding-y:  rem(10px) !default;
+
+$app-sidebar-width:                 rem(220px) !default;
+$app-sidebar-minified-width:        rem(60px) !default;
+$app-sidebar-wide-width:            rem(250px) !default;
+$app-sidebar-component-padding-x:   rem(20px) !default;
+$app-sidebar-component-padding-y:   rem(7px) !default;
+$app-sidebar-mobile-backdrop-bg:    rgba($gray-900, .5) !default;
+
+$app-content-padding-x:             rem(30px) !default;
+$app-content-padding-y:             rem(20px) !default;
+$app-content-padding-x-sm:          rem(20px) !default;
+$app-content-padding-y-sm:          rem(20px) !default;
+$app-content-mobile-padding-x:      rem(20px) !default;
+$app-content-mobile-padding-y:      rem(20px) !default;
+
+$app-page-cover:                    null !default;
+$app-sidebar-menu-profile-cover:    url(../images/cover-sidebar-user.jpg) !default;
+$app-sidebar-transparent-cover:     url(../images/cover-sidebar.jpg) !default;
+$app-coming-soon-bg-cover:          url(../images/coming-soon.jpg) !default;
+$app-boxed-layout-bg-cover:         url(../images/cover-pattern.png) !default;
+$app-error-page-bg-cover:           url(../images/error-page-pattern.png) !default;    
+$app-login-bg-cover:                url(../images/bg-login.png) !default;
+$app-profile-bg-cover:              url(../images/profile-cover.jpg) !default;
+
+
+// 11.0 App - Zindex
+
+$app-loader-zindex:                  1050 !default;
+$app-header-zindex:                  1020 !default;
+$app-top-menu-zindex:                1015 !default;
+$app-sidebar-zindex:                 1010 !default;
+$app-sidebar-mobile-backdrop-zindex: 1020 !default;
+$app-sidebar-float-submenu-zindex:   1020 !default;
+$app-content-zindex:                 1020 !default;
+$app-theme-panel-zindex:             1035 !default;
+
+$btn-scroll-to-top-zindex:           1020 !default;
+$pace-loader-zindex:                 1030 !default;
+$panel-expand-zindex:                1080 !default;
+
+
+// 12.0 App - POS System
+
+$pos-booking-header-height:         rem(52px) !default;
+$pos-counter-header-height:         rem(52px) !default;
+$pos-kitchen-header-height:         rem(52px) !default;
+$pos-stock-header-height:           rem(52px) !default;
+$pos-sidebar-menu-width:            160px !default;
+$pos-sidebar-desktop-width:         360px !default;
+
+
+// 13.0 PAGE - Login Register
+
+$login-v1-container-width:                    rem(400px) !default;
+$login-v2-container-width:                    rem(400px) !default;
+$login-register-news-feed-container-width:    rem(500px) !default;
+$login-register-news-feed-container-width-sm: rem(400px) !default;
+
+
+// 14.0 Form - Component
+
+$form-component-active-bg:          $blue !default;
+$form-component-active-color:       $blue !default;
+$form-feedback-font-size:           rem(11px) !default;
+$form-feedback-tooltip-font-size:   rem(11px) !default;
+
+$form-label-margin-bottom:          .25rem !default;
+$form-label-font-size:              null !default;
+$form-label-font-style:             null !default;
+$form-label-font-weight:            $font-weight-bold !default;
+$form-label-color:                  null !default;
+
+
+// 15.0 Form - Input
+
+$input-bg:                          $white !default;
+$input-border-width:                1px !default;
+$input-border-color:                $border-color !default;
+$input-focus-border-color:          #5db0ff !default;
+$input-btn-padding-y:               rem-default(7px) !default;
+$input-btn-padding-y-sm:            0.3125rem !default;
+$input-btn-padding-x-sm:            0.625rem !default;
+$input-btn-font-size-sm:            0.75rem !default;
+$input-btn-line-height-sm:          $line-height-sm !default;
+$input-color:                       $gray-900 !default;
+$input-group-addon-bg:              $border-color !default;
+$input-group-addon-border-color:    $border-color !default;
+$input-font-weight:                 $font-weight-bold !default;
+$input-disabled-bg:                 $gray-200 !default;
+$input-disabled-border-color:       null !default;
+$form-switch-width:                 2.3em !default;
+$form-select-border-color:          $input-border-color !default;
+$form-check-input-bg:               $input-bg !default;
+$form-check-input-border:           1px solid rgba($black, .25) !default;
+$form-check-input-width:            1.5em !default;
+$form-range-track-bg:               $gray-300 !default;
+$input-placeholder-color:           $gray-600 !default;
+
+
+// 16.0 Table - General
+
+$table-cell-padding-y:              .5rem !default;
+$table-cell-padding-x:              .5rem !default;
+$table-cell-padding-y-sm:           .25rem !default;
+$table-cell-padding-x-sm:           .25rem !default;
+$table-active-bg:                   $gray-200 !default;
+$table-striped-bg:                  $gray-200 !default;
+$table-hover-bg:                    $gray-200 !default;
+$table-border-color:                $gray-300 !default;
+$table-component-active-bg:         $blue !default;
+$table-component-active-color:      $blue !default;
+$table-bg-scale:                    -80% !default;
+$table-variants: (
+  "primary":    shift-color($primary, $table-bg-scale),
+  "secondary":  shift-color($secondary, $table-bg-scale),
+  "success":    shift-color($success, $table-bg-scale),
+  "info":       shift-color($info, $table-bg-scale),
+  "warning":    shift-color($warning, $table-bg-scale),
+  "danger":     shift-color($danger, $table-bg-scale),
+  "light":      $light,
+  "dark":       $dark,
+) !default;
+
+
+// 17.0 UI - Pagination
+
+$pagination-border-width:           1px !default;
+$pagination-bg:                     $white !default;
+$pagination-color:				          lighten($gray-900, 30%) !default;
+$pagination-border-color:           $gray-300 !default;
+$pagination-hover-color:            $gray-900 !default;
+$pagination-hover-bg:               $gray-200 !default;
+$pagination-hover-border-color:     $border-color !default;
+$pagination-active-color:           $component-active-color !default;
+$pagination-active-bg:              $component-active-bg !default;
+$pagination-active-border-color:    $component-active-bg !default;
+$pagination-focus-box-shadow:       0 !default;
+$pagination-disabled-color:         $gray-600 !default;
+$pagination-disabled-bg:            $white !default;
+$pagination-disabled-border-color:  $gray-300 !default;
+
+
+// 18.0 UI - Button
+
+$btn-focus-width:                   0 !default;
+$btn-box-shadow:                    0 !default;
+$btn-border-width:                  1px !default;
+$btn-font-weight:                   $font-weight-bold !default;
+
+
+// 19.0 UI - Modal
+
+$modal-inner-padding:               $spacer !default;
+$modal-content-border-width:        0 !default;
+$modal-header-border-width:         1px !default;
+$modal-footer-border-width:         1px !default;
+$modal-header-border-color:         $gray-300 !default;
+$modal-footer-border-color:         $modal-header-border-color !default;
+$modal-content-color:               null !default;
+$modal-content-bg:                  $white !default;
+
+
+// 20.0 UI - List Group
+
+$list-group-color:                  $gray-900 !default;
+$list-group-bg:                     $white !default;
+$list-group-border-color:           rgba($gray-900, .125) !default;
+$list-group-border-width:           $border-width !default;
+$list-group-border-radius:          $border-radius !default;
+$list-group-item-padding-y:         $spacer * 0.75 !default;
+$list-group-item-padding-x:         $spacer !default;
+
+$list-group-hover-bg:               $gray-100 !default;
+$list-group-active-color:           $component-active-color !default;
+$list-group-active-bg:              $component-active-bg !default;
+$list-group-active-border-color:    $list-group-active-bg !default;
+
+$list-group-disabled-color:         $gray-600 !default;
+$list-group-disabled-bg:            $list-group-bg !default;
+
+$list-group-action-color:           $gray-700 !default;
+$list-group-action-hover-color:     $list-group-action-color !default;
+
+$list-group-action-active-color:    $body-color !default;
+$list-group-action-active-bg:       $gray-200 !default;
+
+
+// 21.0 UI - Alert
+
+$alert-padding-y:                   $spacer !default; // 15px
+$alert-padding-x:                   $spacer !default; // 15px
+$alert-margin-bottom:               1.25rem !default; // 20px
+$alert-border-width:                0 !default;
+
+
+// 22.0 UI - Card
+
+$card-spacer-y:                     $spacer !default;
+$card-spacer-x:                     $spacer !default;
+$card-img-overlay-padding:          $spacer !default;
+$card-columns-gap:                  $spacer !default;
+$card-border-color:                 rgba($gray-900, .15) !default;
+$card-cap-bg:                       lighten($gray-900, 75%) !default;
+$card-color:                        null !default;
+$card-bg:                           $white !default;
+
+
+// 23.0 UI - Dropown
+
+$dropdown-border-width:             0 !default;
+$dropdown-font-size: 		            $font-size-sm !default;
+$dropdown-link-color:               $gray-700 !default;
+$dropdown-link-hover-bg:            tint-color($gray-200, 25%) !default;
+$dropdown-box-shadow:               $box-shadow !default;
+$dropdown-padding-x:                0 !default;
+$dropdown-padding-y:                .5rem !default;
+$dropdown-item-padding-y:           $spacer / 4 !default;
+$dropdown-item-padding-x:           $spacer !default;
+$dropdown-border-radius:            $border-radius !default;
+$dropdown-spacer:                   .125rem !default;
+
+
+// 24.0 UI - Progress
+
+$progress-bar-bg:                   $blue !default;
+$progress-bg:                       lighten($gray-900, 70%) !default;
+$progress-border-radius:            $border-radius !default;
+$progress-box-shadow:               none !default;
+$progress-bar-color:                $white !default;
+
+
+// 25.0 UI - Toast
+
+$toast-background-color:            rgba($white, .98) !default;
+$toast-font-size:                   $font-size-base !default;
+$toast-header-font-size:            $font-size-lg !default;
+$toast-border-width:                0 !default;
+$toast-header-border-width:         1px !default;
+$toast-header-color:                $gray-800 !default;
+$toast-header-border-color:         $gray-200 !default;
+
+
+// 26.0 UI - Badge
+
+$badge-padding-y:                   3px !default;
+$badge-padding-x:                   6px !default;
+$badge-border-radius:               $border-radius !default;
+
+
+// 27.0 UI - Nav Link
+
+$nav-link-padding-y:                .5rem !default;
+$nav-link-padding-x:                1rem !default;
+$nav-link-font-size:                null !default;
+$nav-link-font-weight:              $font-weight-bold !default;
+$nav-link-color:                    $gray-600 !default;
+$nav-link-hover-color:              $gray-900 !default;
+$nav-link-disabled-color:           $gray-400 !default;
+
+
+// 28.0 UI - Nav Tabs
+
+$nav-tabs-border-width:             0 !default;
+$nav-tabs-border-color:             transparent !default;
+$nav-tabs-border-radius:            $border-radius !default;
+$nav-tabs-link-hover-border-color:  transparent !default;
+$nav-tabs-link-active-color:        $gray-900 !default;
+$nav-tabs-link-active-bg:           $white !default;
+$nav-tabs-link-active-border-color: transparent !default;
+
+
+// 29.0 UI - Nav Pills
+
+$nav-pills-border-radius:           $border-radius !default;
+$nav-pills-link-active-color:       $component-active-color !default;
+$nav-pills-link-active-bg:          $component-active-bg !default;
