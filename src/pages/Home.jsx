@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UncontrolledPopover, PopoverHeader, PopoverBody } from "reactstrap";
+import {
+  UncontrolledPopover,
+  PopoverHeader,
+  PopoverBody,
+} from "reactstrap";
 import Spinner from "react-bootstrap/Spinner";
 import swal from "sweetalert";
 import { PROTECTED } from "../config/app-route.jsx";
@@ -23,7 +27,11 @@ import resourceTimelinePlugin from "@fullcalendar/resource-timeline";
 import esLocale from "@fullcalendar/core/locales/es"; //Español
 
 //Components
-import { Panel, PanelHeader, PanelBody } from "../components/panel/panel.jsx";
+import {
+  Panel,
+  PanelHeader,
+  PanelBody,
+} from "../components/panel/panel.jsx";
 
 //Contexts
 import { useAuthContext } from "../contexts/AuthContext.jsx";
@@ -31,6 +39,9 @@ import { useAuthContext } from "../contexts/AuthContext.jsx";
 function Home() {
   const { token } = useAuthContext();
   const navigate = useNavigate();
+
+  //Solo para la demo
+  const initialDate = new Date(2023, 0, 15);
 
   const [indicadores, setIndicadores] = useState([]);
 
@@ -78,7 +89,11 @@ function Home() {
         } catch (error) {
           // Manejar el error aquí (mostrar una alerta, etc.)
           console.error(error);
-          swal("Error", "Hubo un problema al obtener los datos.", "error");
+          swal(
+            "Error",
+            "Hubo un problema al obtener los datos.",
+            "error"
+          );
         }
       }
     };
@@ -137,34 +152,44 @@ function Home() {
                   <div className="mb-3 text-gray-500">
                     <b>RESERVAS DE ESTE MES</b>
                     <span className="ms-2">
-                      <i className="fa fa-info-circle" id="popover1"></i>
+                      <i
+                        className="fa fa-info-circle"
+                        id="popover1"
+                      ></i>
                       <UncontrolledPopover
                         trigger="hover"
                         placement="top"
                         target="popover1"
                       >
-                        <PopoverHeader>Ingresos del mes</PopoverHeader>
+                        <PopoverHeader>
+                          Ingresos del mes
+                        </PopoverHeader>
                         <PopoverBody>
-                          Ingresos totales hasta el momento por las reservas de
-                          este mes.
+                          Ingresos totales hasta el momento por las
+                          reservas de este mes.
                         </PopoverBody>
                       </UncontrolledPopover>
                     </span>
                   </div>
                   <div className="d-flex mb-1">
                     <h2 className="mb-0">
-                      {indicadores && indicadores.ingresos !== undefined ? (
+                      {indicadores &&
+                      indicadores.ingresos !== undefined ? (
                         indicadores.ingresos.toLocaleString("es-AR", {
                           style: "currency",
                           currency: "ARS",
                         })
                       ) : (
-                        <Spinner animation="grow" variant="secondary" />
+                        <Spinner
+                          animation="grow"
+                          variant="secondary"
+                        />
                       )}
                     </h2>
                   </div>
                   <div className="mb-3 text-gray-500">
-                    <i className="fa fa-caret-up"></i> Reservas del mes de
+                    <i className="fa fa-caret-up"></i> Reservas del
+                    mes de
                   </div>
                   <hr className="bg-white-transparent-2" />
                   <div className="row text-truncate">
@@ -173,7 +198,8 @@ function Home() {
                         Saldo pendiente
                       </div>
                       <div className="fs-18px mb-5px fw-bold">
-                        {indicadores && indicadores.saldo !== undefined ? (
+                        {indicadores &&
+                        indicadores.saldo !== undefined ? (
                           indicadores.saldo.toLocaleString("es-AR", {
                             style: "currency",
                             currency: "ARS",
@@ -192,9 +218,11 @@ function Home() {
                           data-animation="width"
                           style={{
                             width:
-                              indicadores && indicadores.ingresos !== undefined
+                              indicadores &&
+                              indicadores.ingresos !== undefined
                                 ? `${(
-                                    (indicadores.saldo / indicadores.ingresos) *
+                                    (indicadores.saldo /
+                                      indicadores.ingresos) *
                                     100
                                   ).toFixed(0)}%`
                                 : "0%",
@@ -207,11 +235,15 @@ function Home() {
                         Efectivo en caja
                       </div>
                       <div className="fs-18px mb-5px fw-bold">
-                        {indicadores && indicadores.efectivo !== undefined ? (
-                          indicadores.efectivo.toLocaleString("es-AR", {
-                            style: "currency",
-                            currency: "ARS",
-                          })
+                        {indicadores &&
+                        indicadores.efectivo !== undefined ? (
+                          indicadores.efectivo.toLocaleString(
+                            "es-AR",
+                            {
+                              style: "currency",
+                              currency: "ARS",
+                            }
+                          )
                         ) : (
                           <Spinner
                             animation="grow"
@@ -226,7 +258,8 @@ function Home() {
                           data-animation="width"
                           style={{
                             width:
-                              indicadores && indicadores.ingresos !== undefined
+                              indicadores &&
+                              indicadores.ingresos !== undefined
                                 ? `${(
                                     (indicadores.efectivo /
                                       indicadores.ingresos) *
@@ -261,9 +294,12 @@ function Home() {
               <i className="fa fa-dollar-sign fa-fw"></i>
             </div>
             <div className="stats-content">
-              <div className="stats-title">PORCENTAJE DE OCUPACIÓN</div>
+              <div className="stats-title">
+                PORCENTAJE DE OCUPACIÓN
+              </div>
               <div className="stats-number">
-                {indicadores && indicadores.ocupacion !== undefined ? (
+                {indicadores &&
+                indicadores.ocupacion !== undefined ? (
                   indicadores.ocupacion.toLocaleString("es-AR", {
                     style: "percent",
                     minimumFractionDigits: 2,
@@ -275,7 +311,10 @@ function Home() {
                 &nbsp;de las noches ocupadas
               </div>
               <div className="stats-progress progress">
-                <div className="progress-bar" style={{ width: "100%" }}></div>
+                <div
+                  className="progress-bar"
+                  style={{ width: "100%" }}
+                ></div>
               </div>
               Precio promedio por noche:&nbsp;
               {indicadores && indicadores.ppn !== undefined ? (
@@ -301,14 +340,18 @@ function Home() {
             <div className="stats-content">
               <div className="stats-title">RESERVAS EN CONFLICTO</div>
               <div className="stats-number">
-                {enCoflictoMessage && enCoflictoMessage !== undefined ? (
+                {enCoflictoMessage &&
+                enCoflictoMessage !== undefined ? (
                   enCoflictoMessage
                 ) : (
                   <Spinner animation="grow" variant="secondary" />
                 )}
               </div>
               <div className="stats-progress progress">
-                <div className="progress-bar" style={{ width: "100%" }}></div>
+                <div
+                  className="progress-bar"
+                  style={{ width: "100%" }}
+                ></div>
               </div>
               <div className="stats-link">
                 <Link
@@ -347,6 +390,7 @@ function Home() {
               slotMinTime="11:00"
               slotMaxTime="15:00"
               initialView="resourceTimelineFifteenDays"
+              initialDate={initialDate}
               resourceAreaHeaderContent="Departamentos"
               headerToolbar={headerToolbar}
               events={events}

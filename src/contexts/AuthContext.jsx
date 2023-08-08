@@ -6,7 +6,7 @@ import {
   useState,
   useEffect,
 } from "react";
-import { getByToken, useTokenExpiration } from "../services/usersServices";
+
 import PropTypes from "prop-types";
 import jwt_decode from "jwt-decode";
 import swal from "sweetalert";
@@ -55,7 +55,10 @@ export default function AuthContextProvider({ children }) {
     if (window.localStorage.getItem(AUTH_TOKEN) !== null) {
       if (
         new Date() >
-        new Date(jwt_decode(window.localStorage.getItem(AUTH_TOKEN)).exp * 1000)
+        new Date(
+          jwt_decode(window.localStorage.getItem(AUTH_TOKEN)).exp *
+            1000
+        )
       ) {
         swal({
           text: "Tu sesión ha expirado",
@@ -82,7 +85,8 @@ export default function AuthContextProvider({ children }) {
       if (
         new Date() >
         new Date(
-          jwt_decode(window.sessionStorage.getItem(AUTH_TOKEN)).exp * 1000
+          jwt_decode(window.sessionStorage.getItem(AUTH_TOKEN)).exp *
+            1000
         )
       ) {
         swal({
@@ -120,7 +124,11 @@ export default function AuthContextProvider({ children }) {
     ]
   );
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 AuthContextProvider.propTypes = {

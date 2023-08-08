@@ -57,17 +57,29 @@ function GastosListado() {
           ]);
           const currentDate = new Date();
           setMinDateRange(
-            new Date(currentDate.getFullYear(), currentDate.getMonth(), 1)
+            new Date(
+              currentDate.getFullYear() - 1,
+              currentDate.getMonth(),
+              1
+            )
           );
           setMaxDateRange(
-            new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
+            new Date(
+              currentDate.getFullYear(),
+              currentDate.getMonth() + 1,
+              0
+            )
           );
           setFormatedList(data);
           setCuentas([...data2, { id: 0, descripcion: "Todas" }]);
           setCategorias([...data3, { id: 0, descripcion: "Todas" }]);
           setIsLoading(false);
         } catch (error) {
-          swal("Error", "Hubo un problema al obtener los datos.", "error");
+          swal(
+            "Error",
+            "Hubo un problema al obtener los datos.",
+            "error"
+          );
         }
       }
     };
@@ -140,7 +152,10 @@ function GastosListado() {
       name: "Eliminar",
       cell: (row) => (
         <>
-          <Button variant="danger" onClick={() => handleButtonDelete(row)}>
+          <Button
+            variant="danger"
+            onClick={() => handleButtonDelete(row)}
+          >
             <i className="fa fa-trash-alt fa-lg"></i>
           </Button>
         </>
@@ -168,16 +183,25 @@ function GastosListado() {
         deleteGasto(token, row)
           .then(() => {
             // Eliminar "row" de "formatedList"
-            const updatedList = formatedList.filter((item) => item !== row);
+            const updatedList = formatedList.filter(
+              (item) => item !== row
+            );
             setFormatedList(updatedList);
 
-            swal(`El gasto: ${row.descripcion} se eliminó correctamente!`, {
-              icon: "success",
-            });
+            swal(
+              `El gasto: ${row.descripcion} se eliminó correctamente!`,
+              {
+                icon: "success",
+              }
+            );
           })
           .catch((error) => {
             console.error(error);
-            swal("Error", "Hubo un problema al eliminar los datos.", "error");
+            swal(
+              "Error",
+              "Hubo un problema al eliminar los datos.",
+              "error"
+            );
           });
       } else {
         swal(
@@ -203,103 +227,112 @@ function GastosListado() {
         <PanelBody>
           {!isLoading ? (
             <>
-              {minDateRange instanceof Date && maxDateRange instanceof Date && (
-                <>
-                  <Row>
-                    <Form.Group as={Col} md="2">
-                      <div className="form-floating m-15px">
-                        <CustomSelect
-                          options={categorias}
-                          defaultOption={categoria}
-                          onOptionChange={(value) => {
-                            setCategoria(parseInt(value, 10));
-                          }}
-                          unselected={false}
-                        />
-                        <label
-                          htmlFor="buscar"
-                          className="d-flex align-items-center fs-13px text-gray-600"
-                        >
-                          Categorías
-                        </label>
-                      </div>
-                    </Form.Group>
-                    <Form.Group as={Col} md="2">
-                      <div className="form-floating m-15px">
-                        <CustomSelect
-                          options={cuentas}
-                          defaultOption={cuenta}
-                          onOptionChange={(value) => {
-                            setCuenta(parseInt(value, 10));
-                          }}
-                          unselected={false}
-                        />
-                        <label
-                          htmlFor="buscar"
-                          className="d-flex align-items-center fs-13px text-gray-600"
-                        >
-                          Cuentas
-                        </label>
-                      </div>
-                    </Form.Group>
-                    <Form.Group as={Col} md="2">
-                      &nbsp;
-                    </Form.Group>
-                    <Form.Group as={Col} md="2">
-                      <div className="form-floating m-15px">
-                        <input
-                          type="date"
-                          className="form-control h-45px fs-13px"
-                          value={minDateRange.toISOString().split("T")[0]}
-                          onChange={(e) =>
-                            setMinDateRange(new Date(e.target.value))
-                          }
-                        />
-                        <label
-                          htmlFor="buscar"
-                          className="d-flex align-items-center fs-13px text-gray-600"
-                        >
-                          Desde
-                        </label>
-                      </div>
-                    </Form.Group>
-                    <Form.Group as={Col} md="2">
-                      <div className="form-floating m-15px">
-                        <input
-                          type="date"
-                          className="form-control h-45px fs-13px"
-                          value={maxDateRange.toISOString().split("T")[0]}
-                          onChange={(e) =>
-                            setMaxDateRange(new Date(e.target.value))
-                          }
-                        />
-                        <label
-                          htmlFor="buscar"
-                          className="d-flex align-items-center fs-13px text-gray-600"
-                        >
-                          Desde
-                        </label>
-                      </div>
-                    </Form.Group>
-                    <Form.Group as={Col} md="2">
-                      <div className="form-floating m-15px">
-                        <Button
-                          variant="outline-warning"
-                          style={{ width: "100%" }}
-                          size="lg"
-                          onClick={() => {
-                            navigate(`${PROTECTED}/gastos/nuevo`);
-                          }}
-                        >
-                          <i className="fa fa-plus"></i>
-                          &nbsp;Gasto
-                        </Button>
-                      </div>
-                    </Form.Group>
-                  </Row>
-                  <hr />
-                </>
-              )}
+              {minDateRange instanceof Date &&
+                maxDateRange instanceof Date && (
+                  <>
+                    <Row>
+                      <Form.Group as={Col} md="2">
+                        <div className="form-floating m-15px">
+                          <CustomSelect
+                            options={categorias}
+                            defaultOption={categoria}
+                            onOptionChange={(value) => {
+                              setCategoria(parseInt(value, 10));
+                            }}
+                            unselected={false}
+                          />
+                          <label
+                            htmlFor="buscar"
+                            className="d-flex align-items-center fs-13px text-gray-600"
+                          >
+                            Categorías
+                          </label>
+                        </div>
+                      </Form.Group>
+                      <Form.Group as={Col} md="2">
+                        <div className="form-floating m-15px">
+                          <CustomSelect
+                            options={cuentas}
+                            defaultOption={cuenta}
+                            onOptionChange={(value) => {
+                              setCuenta(parseInt(value, 10));
+                            }}
+                            unselected={false}
+                          />
+                          <label
+                            htmlFor="buscar"
+                            className="d-flex align-items-center fs-13px text-gray-600"
+                          >
+                            Cuentas
+                          </label>
+                        </div>
+                      </Form.Group>
+                      <Form.Group as={Col} md="2">
+                        &nbsp;
+                      </Form.Group>
+                      <Form.Group as={Col} md="2">
+                        <div className="form-floating m-15px">
+                          <input
+                            type="date"
+                            className="form-control h-45px fs-13px"
+                            value={
+                              minDateRange.toISOString().split("T")[0]
+                            }
+                            onChange={(e) =>
+                              setMinDateRange(
+                                new Date(e.target.value)
+                              )
+                            }
+                          />
+                          <label
+                            htmlFor="buscar"
+                            className="d-flex align-items-center fs-13px text-gray-600"
+                          >
+                            Desde
+                          </label>
+                        </div>
+                      </Form.Group>
+                      <Form.Group as={Col} md="2">
+                        <div className="form-floating m-15px">
+                          <input
+                            type="date"
+                            className="form-control h-45px fs-13px"
+                            value={
+                              maxDateRange.toISOString().split("T")[0]
+                            }
+                            onChange={(e) =>
+                              setMaxDateRange(
+                                new Date(e.target.value)
+                              )
+                            }
+                          />
+                          <label
+                            htmlFor="buscar"
+                            className="d-flex align-items-center fs-13px text-gray-600"
+                          >
+                            Desde
+                          </label>
+                        </div>
+                      </Form.Group>
+                      <Form.Group as={Col} md="2">
+                        <div className="form-floating m-15px">
+                          <Button
+                            variant="outline-warning"
+                            style={{ width: "100%" }}
+                            size="lg"
+                            onClick={() => {
+                              navigate(`${PROTECTED}/gastos/nuevo`);
+                            }}
+                          >
+                            <i className="fa fa-plus"></i>
+                            &nbsp;Gasto
+                          </Button>
+                        </div>
+                      </Form.Group>
+                    </Row>
+                    <hr />
+                  </>
+                )}
               <DataTable
                 columns={columns}
                 data={FilteredList}
