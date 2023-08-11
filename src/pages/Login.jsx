@@ -41,8 +41,8 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const [nick, setNick] = useState("");
-  const [password, setPassword] = useState("");
+  const [nick, setNick] = useState("admin");
+  const [password, setPassword] = useState("admin");
   const [checked, setChecked] = useState(false);
 
   if (isAuthenticated) {
@@ -78,7 +78,9 @@ function Login() {
       <div className="news-feed">
         <div
           className="news-image"
-          style={{ backgroundImage: "url(/assets/img/login-bg/login-bg.jpg)" }}
+          style={{
+            backgroundImage: "url(/assets/img/login-bg/login-bg.jpg)",
+          }}
         ></div>
         <div className="news-caption">
           <h4 className="caption-title">
@@ -148,7 +150,10 @@ function Login() {
                 onChange={(e) => setChecked(e.target.checked)}
                 id="rememberMe"
               />
-              <label className="form-check-label" htmlFor="rememberMe">
+              <label
+                className="form-check-label"
+                htmlFor="rememberMe"
+              >
                 Mantener la sesión iniciada
               </label>
             </div>
