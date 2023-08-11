@@ -1,4 +1,17 @@
-# Getting Started with Create React App
+# La Rosalina FrontEnd
+
+This project provides a dynamic user interface developed with React. This interface seamlessly interacts with the back-end API to power efficient hotel management.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ezequielsirne/larosalina-frontend/main/public/assets/img/Card.jpg" width="100%" title="Intro Card" alt="Intro Card">
+</p>
+
+<h2>Features:</h2>
+Intuitive User Experience: A user-friendly interface designed to streamline reservation, guest, expense, and fund movement management.<br/>
+Real-time Updates: Utilizes React's capabilities to offer real-time updates and feedback, enhancing operational efficiency.<br/>
+Visual Indicators: Incorporates visual indicators to present key performance indicators and informative reports.<br/>
+Responsive Design: Ensures a consistent and responsive experience across various devices.<br/>
+
+Developers can explore the frontend's codebase on the GitHub repository to delve into its technical aspects.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
