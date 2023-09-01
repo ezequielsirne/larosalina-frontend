@@ -5,6 +5,8 @@ This project provides a dynamic user interface developed with React. This interf
   <img src="https://raw.githubusercontent.com/ezequielsirne/larosalina-frontend/main/public/assets/img/Card.jpg" width="100%" title="Intro Card" alt="Intro Card">
 </p>
 
+[Click here to access the live demo](http://larosalinaresort.ezequielsirne.ar/).
+
 <h2>Features:</h2>
 Intuitive User Experience: A user-friendly interface designed to streamline reservation, guest, expense, and fund movement management.<br/>
 Real-time Updates: Utilizes React's capabilities to offer real-time updates and feedback, enhancing operational efficiency.<br/>
